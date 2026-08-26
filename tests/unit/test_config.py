@@ -35,7 +35,7 @@ class TestGrace:
         # reasoning in decisions.md must change with it.
         assert settings.grace("metrics") == timedelta(minutes=2)
         assert settings.grace("logs") == timedelta(minutes=10)
-        assert settings.grace("traces") == timedelta(minutes=15)
+        assert settings.grace("traces") == timedelta(minutes=20)
 
     def test_grace_increases_with_backend_buffering(self, settings: Settings):
         """The ordering is the invariant, more than the exact values.

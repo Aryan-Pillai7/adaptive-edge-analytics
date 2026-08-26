@@ -58,6 +58,19 @@ class Settings(BaseSettings):
     #   metrics  SDK export 10s + Collector batch 5s + VM latencyOffset 30s
     #   logs     ...plus Loki chunk_idle_period 2m / max_chunk_age 5m
     #   traces   ...plus Tempo max_block_duration 5m + complete_block_timeout 5m
+    #            + blocklist_poll 5m  <-- MEASURED, not theoretical: see below
+    #
+    # The trace figure is 20m rather than the 15m originally reasoned from Tempo's
+    # block settings alone. Measured on this stack: traces ingested at 23:31:50 were
+    # searchable at 23:33, then returned ZERO from 23:38 to 23:46, then became
+    # searchable again from 23:47 onwards. The gap is the window after the ingester
+    # flushes a completed block but before that block appears in the queryable
+    # blocklist, which Tempo refreshes on `blocklist_poll` (5m default) -- a third
+    # buffer that the original 15m estimate did not account for.
+    #
+    # This is exactly the failure this pipeline exists to prevent: a job running inside
+    # that gap reads zero traces for a busy window and records a confident, permanent,
+    # silently wrong zero.
     #
     # A single global value would be either wrong for metrics (needless lag) or
     # actively dangerous for traces: rolling up a window Tempo has not yet made
@@ -65,7 +78,7 @@ class Settings(BaseSettings):
     # See decisions.md D-001.
     grace_metrics_seconds: int = Field(default=120, ge=0)
     grace_logs_seconds: int = Field(default=600, ge=0)
-    grace_traces_seconds: int = Field(default=900, ge=0)
+    grace_traces_seconds: int = Field(default=1200, ge=0)
 
     # How far back a run will reach when there is no checkpoint yet (first run, or a
     # reset). Bounded so a cold start cannot accidentally attempt to scan the entire
