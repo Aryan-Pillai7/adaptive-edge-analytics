@@ -29,6 +29,8 @@ if [[ $want_integration -eq 1 ]]; then
   # These assert against the RUNNING sibling stack. The suite skips itself loudly if the
   # stack is absent -- a missing stack is a setup problem, not a defect in the pipeline,
   # and a wall of red would bury the one line that says so.
+  # -rs so the reasons for any skip are printed. A silent skip in this suite means the
+  # read gate did not actually run, which must never look like a pass.
   py -m pytest "$REPO_ROOT/tests/integration" -q -rs -m integration || die "integration tests failed"
   ok "integration tests passed"
 else

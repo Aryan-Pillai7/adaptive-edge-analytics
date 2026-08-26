@@ -5,13 +5,23 @@
 #   lint   seconds   — yaml, ruff, shellcheck
 #   unit   seconds   — aggregation logic against fixtures, no stack, no network
 #
-# A third `integration` job lands in Phase 3, once there is a rollup to run end to end
-# against a live stack. It is deliberately absent until then: CI that only ever asserts
-# "nothing is implemented yet" is CI for its own sake.
+# There is deliberately NO integration job, and the reason is structural rather than
+# effort. The read gate in tests/integration/ asserts on windows that are two full grace
+# periods in the past — up to 40 minutes for traces — because reads must not race
+# ingestion. A CI job would have to boot the sibling stack, generate traffic, and then
+# idle for the better part of an hour before it could assert anything. Any attempt to
+# shorten that produces a suite that skips itself and reports green, which is worse than
+# not running it: it looks like coverage.
 #
-# The unit job is the one that matters most here. The failure modes this project has to
-# avoid — double-counting across runs, missing data at a tier boundary, schema drift —
-# are all logic bugs reproducible from fixtures, without a single container running.
+# So the integration suite is a local gate, run against a real stack that has been alive
+# for a while (`bash scripts/test.sh --integration`). CI covers what CI can actually
+# cover honestly.
+#
+# The unit job is the one that matters most here anyway. The failure modes this project
+# has to avoid — double-counting across runs, missing data at a tier boundary, schema
+# drift — are logic bugs reproducible from recorded fixtures, and tests/unit/ reproduces
+# each backend's real misbehaviour (inclusive window ends, silent truncation, overlap
+# matching) against a fake that misbehaves the same way.
 
 name: ci
 
