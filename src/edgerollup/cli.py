@@ -12,12 +12,16 @@ than being retrofitted at the end.
 from __future__ import annotations
 
 import argparse
+import json
 import logging
 import sys
 from datetime import UTC, datetime
 
 from edgerollup import __version__
 from edgerollup.config import SIGNALS, Settings
+from edgerollup.model import TimeRange
+from edgerollup.registry import open_sources
+from edgerollup.sources import SourceError
 
 log = logging.getLogger("edgerollup")
 
@@ -147,6 +151,42 @@ def cmd_status(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_probe(args: argparse.Namespace) -> int:
+    """Read one window and print the normalised records, without aggregating anything.
+
+    This is the read gate made runnable. It exists so that "can we pull raw data out of
+    this backend cleanly" is answerable on its own, before any aggregation is written
+    that could mask a bad read as a plausible-looking number.
+
+    Output is JSON lines so two windows can be diffed, counted or set-compared with
+    ordinary shell tools.
+    """
+    settings = Settings()
+    window = TimeRange(args.start, args.end)
+
+    with open_sources(settings) as sources:
+        source = sources[args.signal]
+        records = source.read(window)
+
+    for record in records:
+        print(
+            json.dumps(
+                {
+                    "identity": record.identity,
+                    "timestamp": record.timestamp.isoformat(),
+                    "kind": record.signal_kind,
+                    "value": record.value,
+                    "dimensions": record.dims(),
+                },
+                sort_keys=True,
+            )
+        )
+
+    total = sum(record.value for record in records)
+    log.info("%s: %d records in %s (value sum %g)", args.signal, len(records), window, total)
+    return 0
+
+
 def _not_yet(phase: str):
     def handler(args: argparse.Namespace) -> int:
         raise NotImplementedYet(f"lands in {phase}")
@@ -156,9 +196,9 @@ def _not_yet(phase: str):
 
 HANDLERS = {
     "status": cmd_status,
-    "probe": _not_yet("Phase 1"),
-    "run": _not_yet("Phase 3"),
-    "backfill": _not_yet("Phase 3"),
+    "probe": cmd_probe,
+    "run": _not_yet("the aggregation milestone"),
+    "backfill": _not_yet("the aggregation milestone"),
 }
 
 
@@ -185,6 +225,17 @@ def main(argv: list[str] | None = None) -> int:
         # yet" apart from "the rollup ran and failed".
         log.error("`%s` is not implemented yet (%s)", args.command, exc)
         return 3
+    except SourceError as exc:
+        # Exit 4: a backend was unreadable or returned something we refuse to guess at.
+        # Distinct from a crash so the cron wrapper can treat "the stack is down" as a
+        # retryable condition rather than paging about a broken job.
+        log.error("%s", exc)
+        return 4
+    except ValueError as exc:
+        # Almost always a bad window on the command line (end before start, naive
+        # timestamp). A usage error, not a failure of the pipeline.
+        log.error("%s", exc)
+        return 2
 
 
 if __name__ == "__main__":

@@ -1,0 +1,1502 @@
+{
+  "data": {
+    "result": [
+      {
+        "stream": {
+          "aea_probe": "1",
+          "detected_level": "unknown",
+          "service_name": "unknown_service"
+        },
+        "values": [
+          [
+            "1787785852000000000",
+            "probe"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "app": "server",
+          "dedup_count": "20",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T18:46:47Z",
+          "last_observed_timestamp": "2026-08-26T18:46:47Z",
+          "observed_timestamp": "1787770007843990131",
+          "run_id": "verify-1787770000",
+          "service_name": "telemetrygen-probe",
+          "severity_number": "17",
+          "severity_text": "Error"
+        },
+        "values": [
+          [
+            "1787770016806172961",
+            "the message"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/simulate.py",
+          "code_function_name": "_run_flood",
+          "code_line_number": "75",
+          "db_pool": "primary",
+          "db_system": "postgresql",
+          "dedup_count": "50",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "error_kind": "timeout",
+          "first_observed_timestamp": "2026-08-26T18:47:17Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T18:47:18Z",
+          "observed_timestamp": "1787770037772622682",
+          "scope_name": "edgeapp.flood",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "1e29bb92504a165e",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "3256243b75878868281ba5904afa062d"
+        },
+        "values": [
+          [
+            "1787770046048297232",
+            "database connection timeout: pool exhausted, retrying"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/simulate.py",
+          "code_function_name": "_run_flood",
+          "code_line_number": "75",
+          "db_pool": "primary",
+          "db_system": "postgresql",
+          "dedup_count": "50",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "error_kind": "timeout",
+          "first_observed_timestamp": "2026-08-26T18:47:52Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T18:47:53Z",
+          "observed_timestamp": "1787770072097319809",
+          "scope_name": "edgeapp.flood",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "d006a472092fbe21",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "84f51636a87d75041c6af7c1f4b05d89"
+        },
+        "values": [
+          [
+            "1787770075298665538",
+            "database connection timeout: pool exhausted, retrying"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/simulate.py",
+          "code_function_name": "_run_flood",
+          "code_line_number": "75",
+          "db_pool": "primary",
+          "db_system": "postgresql",
+          "dedup_count": "50",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "error_kind": "timeout",
+          "first_observed_timestamp": "2026-08-26T18:50:03Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T18:50:04Z",
+          "observed_timestamp": "1787770203337944285",
+          "scope_name": "edgeapp.flood",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "95844e0b532288f3",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "ff355dddcbc929e16a45165536f979ac"
+        },
+        "values": [
+          [
+            "1787770211242710524",
+            "database connection timeout: pool exhausted, retrying"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/simulate.py",
+          "code_function_name": "_run_flood",
+          "code_line_number": "91",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "warn",
+          "first_observed_timestamp": "2026-08-26T18:47:19Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T18:47:19Z",
+          "observed_timestamp": "1787770039783765573",
+          "scope_name": "edgeapp.flood",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "13",
+          "severity_text": "WARN",
+          "span_id": "1e29bb92504a165e",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "3256243b75878868281ba5904afa062d"
+        },
+        "values": [
+          [
+            "1787770046048304621",
+            "flood complete: 50 log records, 30 unique label values"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/simulate.py",
+          "code_function_name": "_run_flood",
+          "code_line_number": "91",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "warn",
+          "first_observed_timestamp": "2026-08-26T18:47:54Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T18:47:54Z",
+          "observed_timestamp": "1787770074108451918",
+          "scope_name": "edgeapp.flood",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "13",
+          "severity_text": "WARN",
+          "span_id": "d006a472092fbe21",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "84f51636a87d75041c6af7c1f4b05d89"
+        },
+        "values": [
+          [
+            "1787770075298676184",
+            "flood complete: 50 log records, 30 unique label values"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/simulate.py",
+          "code_function_name": "_run_flood",
+          "code_line_number": "91",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "warn",
+          "first_observed_timestamp": "2026-08-26T18:50:05Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T18:50:05Z",
+          "observed_timestamp": "1787770205349473290",
+          "scope_name": "edgeapp.flood",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "13",
+          "severity_text": "WARN",
+          "span_id": "95844e0b532288f3",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "ff355dddcbc929e16a45165536f979ac"
+        },
+        "values": [
+          [
+            "1787770211242721671",
+            "flood complete: 50 log records, 0 unique label values"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/simulate.py",
+          "code_function_name": "start_flood",
+          "code_line_number": "123",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "warn",
+          "first_observed_timestamp": "2026-08-26T18:47:17Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T18:47:17Z",
+          "observed_timestamp": "1787770037772617289",
+          "scope_name": "edgeapp.flood",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "13",
+          "severity_text": "WARN",
+          "span_id": "1e29bb92504a165e",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "3256243b75878868281ba5904afa062d"
+        },
+        "values": [
+          [
+            "1787770046048286307",
+            "flood started: {'duration_seconds': 2, 'logs_per_second': 25, 'unique_labels_per_second': 15, 'total_log_records': 50, 'total_unique_labels': 30, 'duplicate_log_message': 'database connection timeout: pool exhausted, retrying'}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/simulate.py",
+          "code_function_name": "start_flood",
+          "code_line_number": "123",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "warn",
+          "first_observed_timestamp": "2026-08-26T18:47:52Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T18:47:52Z",
+          "observed_timestamp": "1787770072097315688",
+          "scope_name": "edgeapp.flood",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "13",
+          "severity_text": "WARN",
+          "span_id": "d006a472092fbe21",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "84f51636a87d75041c6af7c1f4b05d89"
+        },
+        "values": [
+          [
+            "1787770075298649744",
+            "flood started: {'duration_seconds': 2, 'logs_per_second': 25, 'unique_labels_per_second': 15, 'total_log_records': 50, 'total_unique_labels': 30, 'duplicate_log_message': 'database connection timeout: pool exhausted, retrying'}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/simulate.py",
+          "code_function_name": "start_flood",
+          "code_line_number": "123",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "warn",
+          "first_observed_timestamp": "2026-08-26T18:50:03Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T18:50:03Z",
+          "observed_timestamp": "1787770203337937135",
+          "scope_name": "edgeapp.flood",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "13",
+          "severity_text": "WARN",
+          "span_id": "95844e0b532288f3",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "ff355dddcbc929e16a45165536f979ac"
+        },
+        "values": [
+          [
+            "1787770211242694520",
+            "flood started: {'duration_seconds': 2, 'logs_per_second': 25, 'unique_labels_per_second': 0, 'total_log_records': 50, 'total_unique_labels': 0, 'duplicate_log_message': 'database connection timeout: pool exhausted, retrying'}"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T18:47:54Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T18:47:54Z",
+          "observed_timestamp": "1787770074108467856",
+          "order_id": "agg-0",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "6c4fc818a52d2dc9",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "fafeab562949a8f1fbcb86eb80bc4b8b"
+        },
+        "values": [
+          [
+            "1787770075298704844",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T18:47:54Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T18:47:54Z",
+          "observed_timestamp": "1787770074108476734",
+          "order_id": "agg-1",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "f390212a649b7c07",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "96d16719f5a31259501c789a540091b5"
+        },
+        "values": [
+          [
+            "1787770075298730030",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T18:47:54Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T18:47:54Z",
+          "observed_timestamp": "1787770074108480711",
+          "order_id": "agg-2",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "2cabcf1ac0eb4195",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "ffc1c08c411e8c5c3174eec9427121fd"
+        },
+        "values": [
+          [
+            "1787770075298735004",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T18:47:54Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T18:47:54Z",
+          "observed_timestamp": "1787770074108488706",
+          "order_id": "agg-3",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "636cbf98d3cbc345",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "185316f90405f494464a5224bcb30c2c"
+        },
+        "values": [
+          [
+            "1787770075298686768",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T18:47:54Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T18:47:54Z",
+          "observed_timestamp": "1787770074108492456",
+          "order_id": "agg-4",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "c8542b4a5226a9bf",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "f31a24f76c3e0da3bbe141bb6b4da20d"
+        },
+        "values": [
+          [
+            "1787770075298709951",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T18:47:54Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T18:47:54Z",
+          "observed_timestamp": "1787770074108496032",
+          "order_id": "agg-5",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "579e5810dd35d1e5",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "3729acafc891b776b11c7ec04877b940"
+        },
+        "values": [
+          [
+            "1787770075298698812",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T18:47:54Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T18:47:54Z",
+          "observed_timestamp": "1787770074108499547",
+          "order_id": "agg-6",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "bc85e0ef7ebcfc60",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "b426e5e2d9587e5db6d6e87fe629c69d"
+        },
+        "values": [
+          [
+            "1787770075298712088",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T18:47:54Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T18:47:54Z",
+          "observed_timestamp": "1787770074108503071",
+          "order_id": "agg-7",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "dbcfc18e78ac2788",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "8b48adb57b2f451c6669b124b19faaa1"
+        },
+        "values": [
+          [
+            "1787770075298714945",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T18:47:54Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T18:47:54Z",
+          "observed_timestamp": "1787770074108506647",
+          "order_id": "agg-8",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "d6d076a5294b672d",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "ec1e2811c98f48bb65f1d5b4221bbfda"
+        },
+        "values": [
+          [
+            "1787770075298717216",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T18:47:54Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T18:47:54Z",
+          "observed_timestamp": "1787770074108513501",
+          "order_id": "agg-9",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "9020106d5a2f2c0d",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "cd7b3b6ac8c8d7560afe59d811b74786"
+        },
+        "values": [
+          [
+            "1787770075298719590",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T18:47:54Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T18:47:54Z",
+          "observed_timestamp": "1787770074108517190",
+          "order_id": "agg-10",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "85003325dc6c703e",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "7a8b7d981b55c47f1a5db2b7e3d20ca0"
+        },
+        "values": [
+          [
+            "1787770075298702419",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T18:47:54Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T18:47:54Z",
+          "observed_timestamp": "1787770074108520705",
+          "order_id": "agg-11",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "3d04673f84b2af64",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "e7d600542df74c1243eb0037a50022da"
+        },
+        "values": [
+          [
+            "1787770075298721655",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T18:48:29Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T18:48:29Z",
+          "observed_timestamp": "1787770109536718123",
+          "order_id": "bounded-1",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "3a5195380094e43f",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "567ccb173b07395665f1024b3169c345"
+        },
+        "values": [
+          [
+            "1787770113690297768",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T18:48:29Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T18:48:29Z",
+          "observed_timestamp": "1787770109536729756",
+          "order_id": "it-1787770109540",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "c23c0bfd4450d8b7",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "76c1477c3ea5220a6d69eb9419f41bcb"
+        },
+        "values": [
+          [
+            "1787770113690307282",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T18:49:14Z",
+          "last_observed_timestamp": "2026-08-26T18:49:14Z",
+          "observed_timestamp": "1787770154893963313",
+          "order_id": "healthy-1787770152728-29",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0"
+        },
+        "values": [
+          [
+            "1787770162887260968",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T18:49:45Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T18:49:45Z",
+          "observed_timestamp": "1787770185073844171",
+          "order_id": "it-1787770184812",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "55bda075e731f8c5",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "914df91493a63f6ddaf26992e7289257"
+        },
+        "values": [
+          [
+            "1787770192003521918",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T18:50:33Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T18:50:33Z",
+          "observed_timestamp": "1787770233744635327",
+          "order_id": "it-1787770233440",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "65b9cd1555286f3d",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "938502743b772ee8c3af17216e3bff7e"
+        },
+        "values": [
+          [
+            "1787770240602158701",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T18:50:42Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T18:50:42Z",
+          "observed_timestamp": "1787770242753382819",
+          "order_id": "it-1787770241550",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "b6bd18cb39cef55e",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "e63ccfb6b801d79d61d3dd642540a771"
+        },
+        "values": [
+          [
+            "1787770250601777833",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T18:50:42Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T18:50:42Z",
+          "observed_timestamp": "1787770242753387673",
+          "order_id": "it-1787770241625",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "daae83269d22934e",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "af24a5e69e1b3c47bf962eb1c2551286"
+        },
+        "values": [
+          [
+            "1787770250601792477",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T18:50:42Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T18:50:42Z",
+          "observed_timestamp": "1787770242753390543",
+          "order_id": "it-1787770241667",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "53fc7c76132e512b",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "fcdba3072f2dde677dc7e13dae3cbc11"
+        },
+        "values": [
+          [
+            "1787770250601800163",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T18:50:42Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T18:50:42Z",
+          "observed_timestamp": "1787770242753393330",
+          "order_id": "it-1787770241737",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "21d8c27b12e64a1f",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "0227717908ad82726034bfc92cd12102"
+        },
+        "values": [
+          [
+            "1787770250601806536",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T18:50:42Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T18:50:42Z",
+          "observed_timestamp": "1787770242753395891",
+          "order_id": "it-1787770241902",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "182aaa462e8fbfd0",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "8240d306f1a6c865f3bbabefa3909198"
+        },
+        "values": [
+          [
+            "1787770250601815064",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T23:31:51Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T23:31:51Z",
+          "observed_timestamp": "1787787111930633355",
+          "order_id": "e-1",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "449ecad74a60cf4f",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "539a0248e8cda2827f99d5b6468343ee"
+        },
+        "values": [
+          [
+            "1787787119624407989",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T23:31:51Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T23:31:51Z",
+          "observed_timestamp": "1787787111930645762",
+          "order_id": "e-2",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "18190925cc4dac2a",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "17c2717091f0af8ccd198bec712eff78"
+        },
+        "values": [
+          [
+            "1787787119624409344",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T23:31:51Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T23:31:51Z",
+          "observed_timestamp": "1787787111930648469",
+          "order_id": "e-3",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "ca78c3888262aee7",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "57ea93533a958bc3850fb3d5fe114150"
+        },
+        "values": [
+          [
+            "1787787119624194769",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T23:31:52Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T23:31:52Z",
+          "observed_timestamp": "1787787112936451058",
+          "order_id": "e-4",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "e342ad200299d62f",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "8a3c5b33a2099e83f9c187c57a2815d2"
+        },
+        "values": [
+          [
+            "1787787119624400209",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T23:31:52Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T23:31:52Z",
+          "observed_timestamp": "1787787112936458677",
+          "order_id": "e-5",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "0b783cc558ba3875",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "834ca1e0eed7f63e692d534b6e8940b5"
+        },
+        "values": [
+          [
+            "1787787119624404221",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T23:31:52Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T23:31:52Z",
+          "observed_timestamp": "1787787112936462733",
+          "order_id": "e-6",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "5c2bfe9ed1a1d4b2",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "3cb3452794fdda34a1e18d30f75782f6"
+        },
+        "values": [
+          [
+            "1787787119624405703",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T23:41:20Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T23:41:20Z",
+          "observed_timestamp": "1787787680416557386",
+          "order_id": "f-10",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "d3e5ca49683c3c63",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "2d7beef0b72613e70a7cb6af10cc5e3c"
+        },
+        "values": [
+          [
+            "1787787682676873123",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T23:41:20Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T23:41:20Z",
+          "observed_timestamp": "1787787680416617857",
+          "order_id": "fe-1",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "c25d9b730cdfc06a",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "a432f9e4d89b7992d55de88c7e874a35"
+        },
+        "values": [
+          [
+            "1787787682677143516",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T23:41:21Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T23:41:21Z",
+          "observed_timestamp": "1787787681423789091",
+          "order_id": "fe-2",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "9198b46e3997039f",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "4b0fefd6d1ee49fa0ccfe378ab9babb8"
+        },
+        "values": [
+          [
+            "1787787682677150083",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      },
+      {
+        "stream": {
+          "code_file_path": "/usr/local/lib/python3.13/site-packages/edgeapp/routes/work.py",
+          "code_function_name": "get_order",
+          "code_line_number": "103",
+          "dedup_count": "1",
+          "deployment_environment": "local",
+          "detected_level": "error",
+          "first_observed_timestamp": "2026-08-26T23:41:21Z",
+          "flags": "3",
+          "last_observed_timestamp": "2026-08-26T23:41:21Z",
+          "observed_timestamp": "1787787681798620173",
+          "order_id": "fe-3",
+          "scope_name": "edgeapp.work",
+          "service_instance_id": "3176c1fa-3f3b-4c3b-9a1c-df04a35c9b9f",
+          "service_name": "edge-demo-service",
+          "service_version": "0.1.0",
+          "severity_number": "17",
+          "severity_text": "ERROR",
+          "span_id": "1aedf038a6f7ea34",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.44.0",
+          "trace_id": "7e2b9f0530be113e897bac15ea164d27"
+        },
+        "values": [
+          [
+            "1787787682677153429",
+            "order lookup failed: downstream inventory service returned 503"
+          ]
+        ]
+      }
+    ],
+    "resultType": "streams",
+    "stats": {
+      "cache": {
+        "chunk": {
+          "bytesReceived": 2843,
+          "bytesSent": 320,
+          "downloadTime": 22991,
+          "entriesFound": 1,
+          "entriesRequested": 2,
+          "entriesStored": 2,
+          "queryLengthServed": 0,
+          "requests": 2
+        },
+        "index": {
+          "bytesReceived": 0,
+          "bytesSent": 0,
+          "downloadTime": 0,
+          "entriesFound": 0,
+          "entriesRequested": 0,
+          "entriesStored": 0,
+          "queryLengthServed": 0,
+          "requests": 0
+        },
+        "instantMetricResult": {
+          "bytesReceived": 0,
+          "bytesSent": 0,
+          "downloadTime": 0,
+          "entriesFound": 0,
+          "entriesRequested": 0,
+          "entriesStored": 0,
+          "queryLengthServed": 0,
+          "requests": 0
+        },
+        "labelResult": {
+          "bytesReceived": 0,
+          "bytesSent": 0,
+          "downloadTime": 0,
+          "entriesFound": 0,
+          "entriesRequested": 0,
+          "entriesStored": 0,
+          "queryLengthServed": 0,
+          "requests": 0
+        },
+        "result": {
+          "bytesReceived": 0,
+          "bytesSent": 0,
+          "downloadTime": 0,
+          "entriesFound": 0,
+          "entriesRequested": 0,
+          "entriesStored": 0,
+          "queryLengthServed": 0,
+          "requests": 0
+        },
+        "seriesResult": {
+          "bytesReceived": 0,
+          "bytesSent": 0,
+          "downloadTime": 0,
+          "entriesFound": 0,
+          "entriesRequested": 0,
+          "entriesStored": 0,
+          "queryLengthServed": 0,
+          "requests": 0
+        },
+        "statsResult": {
+          "bytesReceived": 2330,
+          "bytesSent": 0,
+          "downloadTime": 139028,
+          "entriesFound": 6,
+          "entriesRequested": 6,
+          "entriesStored": 6,
+          "queryLengthServed": 206000000000,
+          "requests": 12
+        },
+        "volumeResult": {
+          "bytesReceived": 0,
+          "bytesSent": 0,
+          "downloadTime": 0,
+          "entriesFound": 0,
+          "entriesRequested": 0,
+          "entriesStored": 0,
+          "queryLengthServed": 0,
+          "requests": 0
+        }
+      },
+      "index": {
+        "postFilterChunks": 0,
+        "shardsDuration": 0,
+        "totalChunks": 0,
+        "usedBloomFilters": false
+      },
+      "ingester": {
+        "store": {
+          "chunk": {
+            "compressedBytes": 270,
+            "decompressedBytes": 2887,
+            "decompressedLines": 7,
+            "decompressedStructuredMetadataBytes": 2370,
+            "headChunkBytes": 856,
+            "headChunkLines": 4,
+            "headChunkStructuredMetadataBytes": 608,
+            "postFilterLines": 11,
+            "totalDuplicates": 0
+          },
+          "chunkRefsFetchTime": 1153206,
+          "chunksDownloadTime": 678687,
+          "congestionControlLatency": 0,
+          "pipelineWrapperFilteredLines": 0,
+          "queryReferencedStructuredMetadata": false,
+          "totalChunksDownloaded": 2,
+          "totalChunksRef": 2
+        },
+        "totalBatches": 3,
+        "totalChunksMatched": 1,
+        "totalLinesSent": 11,
+        "totalReached": 2
+      },
+      "querier": {
+        "store": {
+          "chunk": {
+            "compressedBytes": 1041,
+            "decompressedBytes": 15234,
+            "decompressedLines": 32,
+            "decompressedStructuredMetadataBytes": 12220,
+            "headChunkBytes": 0,
+            "headChunkLines": 0,
+            "headChunkStructuredMetadataBytes": 0,
+            "postFilterLines": 32,
+            "totalDuplicates": 0
+          },
+          "chunkRefsFetchTime": 9071245,
+          "chunksDownloadTime": 13794386,
+          "congestionControlLatency": 0,
+          "pipelineWrapperFilteredLines": 0,
+          "queryReferencedStructuredMetadata": false,
+          "totalChunksDownloaded": 2,
+          "totalChunksRef": 2
+        }
+      },
+      "summary": {
+        "bytesProcessedPerSecond": 39246,
+        "execTime": 0.483529,
+        "linesProcessedPerSecond": 88,
+        "queueTime": 0.017228,
+        "shards": 7,
+        "splits": 7,
+        "subqueries": 0,
+        "totalBytesProcessed": 18977,
+        "totalEntriesReturned": 43,
+        "totalLinesProcessed": 43,
+        "totalPostFilterLines": 43,
+        "totalStructuredMetadataBytesProcessed": 15198
+      }
+    }
+  },
+  "status": "success"
+}

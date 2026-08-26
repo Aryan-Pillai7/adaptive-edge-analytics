@@ -1,0 +1,3456 @@
+{
+  "metrics": {
+    "completedJobs": 4,
+    "inspectedBytes": "45014",
+    "totalBlockBytes": "43501",
+    "totalBlocks": 1,
+    "totalJobs": 4
+  },
+  "traces": [
+    {
+      "durationMs": 19,
+      "rootServiceName": "edge-demo-service",
+      "rootTraceName": "GET /api/orders/{order_id}",
+      "serviceStats": {
+        "edge-demo-service": {
+          "errorCount": 2,
+          "spanCount": 4
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "39891",
+            "spanID": "d01cf9cfd4730723",
+            "startTimeUnixNano": "1787787682311770246"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "19812520",
+            "spanID": "1aedf038a6f7ea34",
+            "startTimeUnixNano": "1787787682292491297"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "39891",
+              "spanID": "d01cf9cfd4730723",
+              "startTimeUnixNano": "1787787682311770246"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "19812520",
+              "spanID": "1aedf038a6f7ea34",
+              "startTimeUnixNano": "1787787682292491297"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787787682292491297",
+      "traceID": "7e2b9f0530be113e897bac15ea164d27"
+    },
+    {
+      "durationMs": 4,
+      "rootServiceName": "edge-demo-service",
+      "rootTraceName": "GET /api/orders/{order_id}",
+      "serviceStats": {
+        "edge-demo-service": {
+          "errorCount": 2,
+          "spanCount": 4
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "36933",
+            "spanID": "7b8deb791c8e126e",
+            "startTimeUnixNano": "1787787681253661941"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "4278743",
+            "spanID": "9198b46e3997039f",
+            "startTimeUnixNano": "1787787681249778467"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "36933",
+              "spanID": "7b8deb791c8e126e",
+              "startTimeUnixNano": "1787787681253661941"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "4278743",
+              "spanID": "9198b46e3997039f",
+              "startTimeUnixNano": "1787787681249778467"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787787681249778467",
+      "traceID": "4b0fefd6d1ee49fa0ccfe378ab9babb8"
+    },
+    {
+      "durationMs": 9,
+      "rootServiceName": "edge-demo-service",
+      "rootTraceName": "GET /api/orders/{order_id}",
+      "serviceStats": {
+        "edge-demo-service": {
+          "errorCount": 2,
+          "spanCount": 4
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "70278",
+            "spanID": "08dc37e957785e16",
+            "startTimeUnixNano": "1787787680181105425"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "9894725",
+            "spanID": "c25d9b730cdfc06a",
+            "startTimeUnixNano": "1787787680171843941"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "70278",
+              "spanID": "08dc37e957785e16",
+              "startTimeUnixNano": "1787787680181105425"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "9894725",
+              "spanID": "c25d9b730cdfc06a",
+              "startTimeUnixNano": "1787787680171843941"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787787680171843941",
+      "traceID": "a432f9e4d89b7992d55de88c7e874a35"
+    },
+    {
+      "durationMs": 30,
+      "rootServiceName": "edge-demo-service",
+      "rootTraceName": "GET /api/orders/{order_id}",
+      "serviceStats": {
+        "edge-demo-service": {
+          "errorCount": 2,
+          "spanCount": 4
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "91215",
+            "spanID": "a724c9aee1172e7b",
+            "startTimeUnixNano": "1787787679562111237"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "30741942",
+            "spanID": "d3e5ca49683c3c63",
+            "startTimeUnixNano": "1787787679533491002"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "91215",
+              "spanID": "a724c9aee1172e7b",
+              "startTimeUnixNano": "1787787679562111237"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "30741942",
+              "spanID": "d3e5ca49683c3c63",
+              "startTimeUnixNano": "1787787679533491002"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787787679533491002",
+      "traceID": "2d7beef0b72613e70a7cb6af10cc5e3c"
+    },
+    {
+      "durationMs": 21,
+      "rootServiceName": "edge-demo-service",
+      "rootTraceName": "GET /api/orders/{order_id}",
+      "serviceStats": {
+        "edge-demo-service": {
+          "errorCount": 2,
+          "spanCount": 4
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "38259",
+            "spanID": "0906d10db85e4408",
+            "startTimeUnixNano": "1787770242172543415"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "21445886",
+            "spanID": "182aaa462e8fbfd0",
+            "startTimeUnixNano": "1787770242151825049"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "38259",
+              "spanID": "0906d10db85e4408",
+              "startTimeUnixNano": "1787770242172543415"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "21445886",
+              "spanID": "182aaa462e8fbfd0",
+              "startTimeUnixNano": "1787770242151825049"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770242151825049",
+      "traceID": "8240d306f1a6c865f3bbabefa3909198"
+    },
+    {
+      "durationMs": 22,
+      "rootServiceName": "edge-demo-service",
+      "rootTraceName": "GET /api/orders/{order_id}",
+      "serviceStats": {
+        "edge-demo-service": {
+          "errorCount": 2,
+          "spanCount": 4
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "38989",
+            "spanID": "9c8bdda7eb2bae1f",
+            "startTimeUnixNano": "1787770242004426809"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "22887197",
+            "spanID": "21d8c27b12e64a1f",
+            "startTimeUnixNano": "1787770241982063289"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "38989",
+              "spanID": "9c8bdda7eb2bae1f",
+              "startTimeUnixNano": "1787770242004426809"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "22887197",
+              "spanID": "21d8c27b12e64a1f",
+              "startTimeUnixNano": "1787770241982063289"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770241982063289",
+      "traceID": "227717908ad82726034bfc92cd12102"
+    },
+    {
+      "durationMs": 18,
+      "rootServiceName": "edge-demo-service",
+      "rootTraceName": "GET /api/orders/{order_id}",
+      "serviceStats": {
+        "edge-demo-service": {
+          "errorCount": 2,
+          "spanCount": 4
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "53285",
+            "spanID": "d266fa4b7d5f65c5",
+            "startTimeUnixNano": "1787770241929546541"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "18603624",
+            "spanID": "53fc7c76132e512b",
+            "startTimeUnixNano": "1787770241911560144"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "53285",
+              "spanID": "d266fa4b7d5f65c5",
+              "startTimeUnixNano": "1787770241929546541"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "18603624",
+              "spanID": "53fc7c76132e512b",
+              "startTimeUnixNano": "1787770241911560144"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770241911560144",
+      "traceID": "fcdba3072f2dde677dc7e13dae3cbc11"
+    },
+    {
+      "durationMs": 14,
+      "rootServiceName": "edge-demo-service",
+      "rootTraceName": "GET /api/orders/{order_id}",
+      "serviceStats": {
+        "edge-demo-service": {
+          "errorCount": 2,
+          "spanCount": 4
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "51270",
+            "spanID": "db53b755f5f65534",
+            "startTimeUnixNano": "1787770241881171959"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "14757605",
+            "spanID": "daae83269d22934e",
+            "startTimeUnixNano": "1787770241866899237"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "51270",
+              "spanID": "db53b755f5f65534",
+              "startTimeUnixNano": "1787770241881171959"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "14757605",
+              "spanID": "daae83269d22934e",
+              "startTimeUnixNano": "1787770241866899237"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770241866899237",
+      "traceID": "af24a5e69e1b3c47bf962eb1c2551286"
+    },
+    {
+      "durationMs": 21,
+      "rootServiceName": "edge-demo-service",
+      "rootTraceName": "GET /api/orders/{order_id}",
+      "serviceStats": {
+        "edge-demo-service": {
+          "errorCount": 2,
+          "spanCount": 4
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "36686",
+            "spanID": "55432d2a5f3644d4",
+            "startTimeUnixNano": "1787770241831807802"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "21108567",
+            "spanID": "b6bd18cb39cef55e",
+            "startTimeUnixNano": "1787770241811075172"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "36686",
+              "spanID": "55432d2a5f3644d4",
+              "startTimeUnixNano": "1787770241831807802"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "21108567",
+              "spanID": "b6bd18cb39cef55e",
+              "startTimeUnixNano": "1787770241811075172"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770241811075172",
+      "traceID": "e63ccfb6b801d79d61d3dd642540a771"
+    },
+    {
+      "durationMs": 9,
+      "rootServiceName": "edge-demo-service",
+      "rootTraceName": "GET /api/orders/{order_id}",
+      "serviceStats": {
+        "edge-demo-service": {
+          "errorCount": 2,
+          "spanCount": 4
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "49205",
+            "spanID": "94ca6a4f5f63ff55",
+            "startTimeUnixNano": "1787770233404084033"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "9198294",
+            "spanID": "65b9cd1555286f3d",
+            "startTimeUnixNano": "1787770233395631867"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "49205",
+              "spanID": "94ca6a4f5f63ff55",
+              "startTimeUnixNano": "1787770233404084033"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "9198294",
+              "spanID": "65b9cd1555286f3d",
+              "startTimeUnixNano": "1787770233395631867"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770233395631867",
+      "traceID": "938502743b772ee8c3af17216e3bff7e"
+    },
+    {
+      "durationMs": 10,
+      "rootServiceName": "edge-demo-service",
+      "rootTraceName": "GET /api/orders/{order_id}",
+      "serviceStats": {
+        "edge-demo-service": {
+          "errorCount": 2,
+          "spanCount": 4
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "39912",
+            "spanID": "2b2e033d9b01de53",
+            "startTimeUnixNano": "1787770184770401412"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "10991691",
+            "spanID": "55bda075e731f8c5",
+            "startTimeUnixNano": "1787770184759794384"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "39912",
+              "spanID": "2b2e033d9b01de53",
+              "startTimeUnixNano": "1787770184770401412"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "10991691",
+              "spanID": "55bda075e731f8c5",
+              "startTimeUnixNano": "1787770184759794384"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770184759794384",
+      "traceID": "914df91493a63f6ddaf26992e7289257"
+    },
+    {
+      "durationMs": 6,
+      "rootServiceName": "edge-demo-service",
+      "rootTraceName": "GET /api/orders/{order_id}",
+      "serviceStats": {
+        "edge-demo-service": {
+          "errorCount": 2,
+          "spanCount": 4
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "53074",
+            "spanID": "79280f8fe49bead2",
+            "startTimeUnixNano": "1787770109160433352"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "6081037",
+            "spanID": "c23c0bfd4450d8b7",
+            "startTimeUnixNano": "1787770109155592387"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "53074",
+              "spanID": "79280f8fe49bead2",
+              "startTimeUnixNano": "1787770109160433352"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "6081037",
+              "spanID": "c23c0bfd4450d8b7",
+              "startTimeUnixNano": "1787770109155592387"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770109155592387",
+      "traceID": "76c1477c3ea5220a6d69eb9419f41bcb"
+    },
+    {
+      "durationMs": 20,
+      "rootServiceName": "edge-demo-service",
+      "rootTraceName": "GET /api/orders/{order_id}",
+      "serviceStats": {
+        "edge-demo-service": {
+          "errorCount": 2,
+          "spanCount": 4
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "40968",
+            "spanID": "f3a6bec4e54ad583",
+            "startTimeUnixNano": "1787770109135099988"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "20434707",
+            "spanID": "3a5195380094e43f",
+            "startTimeUnixNano": "1787770109115089620"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "40968",
+              "spanID": "f3a6bec4e54ad583",
+              "startTimeUnixNano": "1787770109135099988"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "20434707",
+              "spanID": "3a5195380094e43f",
+              "startTimeUnixNano": "1787770109115089620"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770109115089620",
+      "traceID": "567ccb173b07395665f1024b3169c345"
+    },
+    {
+      "durationMs": 9,
+      "rootServiceName": "edge-demo-service",
+      "rootTraceName": "GET /api/orders/{order_id}",
+      "serviceStats": {
+        "edge-demo-service": {
+          "errorCount": 2,
+          "spanCount": 4
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "36994",
+            "spanID": "f2047c1cabab6809",
+            "startTimeUnixNano": "1787770073622097419"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "9622674",
+            "spanID": "3d04673f84b2af64",
+            "startTimeUnixNano": "1787770073612998581"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "36994",
+              "spanID": "f2047c1cabab6809",
+              "startTimeUnixNano": "1787770073622097419"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "9622674",
+              "spanID": "3d04673f84b2af64",
+              "startTimeUnixNano": "1787770073612998581"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770073612998581",
+      "traceID": "e7d600542df74c1243eb0037a50022da"
+    },
+    {
+      "durationMs": 12,
+      "rootServiceName": "edge-demo-service",
+      "rootTraceName": "GET /api/orders/{order_id}",
+      "serviceStats": {
+        "edge-demo-service": {
+          "errorCount": 2,
+          "spanCount": 4
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "37734",
+            "spanID": "4054571d0cc86955",
+            "startTimeUnixNano": "1787770073608540345"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "12361893",
+            "spanID": "85003325dc6c703e",
+            "startTimeUnixNano": "1787770073596604101"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "37734",
+              "spanID": "4054571d0cc86955",
+              "startTimeUnixNano": "1787770073608540345"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "12361893",
+              "spanID": "85003325dc6c703e",
+              "startTimeUnixNano": "1787770073596604101"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770073596604101",
+      "traceID": "7a8b7d981b55c47f1a5db2b7e3d20ca0"
+    },
+    {
+      "durationMs": 21,
+      "rootServiceName": "edge-demo-service",
+      "rootTraceName": "GET /api/orders/{order_id}",
+      "serviceStats": {
+        "edge-demo-service": {
+          "errorCount": 2,
+          "spanCount": 4
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "66372",
+            "spanID": "4acf4684864a4ef9",
+            "startTimeUnixNano": "1787770073592163004"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "21640900",
+            "spanID": "9020106d5a2f2c0d",
+            "startTimeUnixNano": "1787770073571077455"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "66372",
+              "spanID": "4acf4684864a4ef9",
+              "startTimeUnixNano": "1787770073592163004"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "21640900",
+              "spanID": "9020106d5a2f2c0d",
+              "startTimeUnixNano": "1787770073571077455"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770073571077455",
+      "traceID": "cd7b3b6ac8c8d7560afe59d811b74786"
+    },
+    {
+      "durationMs": 21,
+      "rootServiceName": "edge-demo-service",
+      "rootTraceName": "GET /api/orders/{order_id}",
+      "serviceStats": {
+        "edge-demo-service": {
+          "errorCount": 2,
+          "spanCount": 4
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "62899",
+            "spanID": "680e6ea912f4f6f1",
+            "startTimeUnixNano": "1787770073566977911"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "21808080",
+            "spanID": "d6d076a5294b672d",
+            "startTimeUnixNano": "1787770073545704589"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "62899",
+              "spanID": "680e6ea912f4f6f1",
+              "startTimeUnixNano": "1787770073566977911"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "21808080",
+              "spanID": "d6d076a5294b672d",
+              "startTimeUnixNano": "1787770073545704589"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770073545704589",
+      "traceID": "ec1e2811c98f48bb65f1d5b4221bbfda"
+    },
+    {
+      "durationMs": 14,
+      "rootServiceName": "edge-demo-service",
+      "rootTraceName": "GET /api/orders/{order_id}",
+      "serviceStats": {
+        "edge-demo-service": {
+          "errorCount": 2,
+          "spanCount": 4
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "41145",
+            "spanID": "2be9bfa61b8d593d",
+            "startTimeUnixNano": "1787770073541309714"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "14946984",
+            "spanID": "dbcfc18e78ac2788",
+            "startTimeUnixNano": "1787770073526751715"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "41145",
+              "spanID": "2be9bfa61b8d593d",
+              "startTimeUnixNano": "1787770073541309714"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "14946984",
+              "spanID": "dbcfc18e78ac2788",
+              "startTimeUnixNano": "1787770073526751715"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770073526751715",
+      "traceID": "8b48adb57b2f451c6669b124b19faaa1"
+    },
+    {
+      "durationMs": 10,
+      "rootServiceName": "edge-demo-service",
+      "rootTraceName": "GET /api/orders/{order_id}",
+      "serviceStats": {
+        "edge-demo-service": {
+          "errorCount": 2,
+          "spanCount": 4
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "65314",
+            "spanID": "2eca5ce08b3c2f5f",
+            "startTimeUnixNano": "1787770073522000039"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "10401230",
+            "spanID": "bc85e0ef7ebcfc60",
+            "startTimeUnixNano": "1787770073512463435"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "65314",
+              "spanID": "2eca5ce08b3c2f5f",
+              "startTimeUnixNano": "1787770073522000039"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "10401230",
+              "spanID": "bc85e0ef7ebcfc60",
+              "startTimeUnixNano": "1787770073512463435"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770073512463435",
+      "traceID": "b426e5e2d9587e5db6d6e87fe629c69d"
+    },
+    {
+      "durationMs": 18,
+      "rootServiceName": "edge-demo-service",
+      "rootTraceName": "GET /api/orders/{order_id}",
+      "serviceStats": {
+        "edge-demo-service": {
+          "errorCount": 2,
+          "spanCount": 4
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "69568",
+            "spanID": "454e790ca502498d",
+            "startTimeUnixNano": "1787770073506876040"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "18808097",
+            "spanID": "579e5810dd35d1e5",
+            "startTimeUnixNano": "1787770073488816718"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "69568",
+              "spanID": "454e790ca502498d",
+              "startTimeUnixNano": "1787770073506876040"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "18808097",
+              "spanID": "579e5810dd35d1e5",
+              "startTimeUnixNano": "1787770073488816718"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770073488816718",
+      "traceID": "3729acafc891b776b11c7ec04877b940"
+    },
+    {
+      "durationMs": 16,
+      "rootServiceName": "edge-demo-service",
+      "rootTraceName": "GET /api/orders/{order_id}",
+      "serviceStats": {
+        "edge-demo-service": {
+          "errorCount": 2,
+          "spanCount": 4
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "46488",
+            "spanID": "483d4314aa7ba8e6",
+            "startTimeUnixNano": "1787770073483727089"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "16446404",
+            "spanID": "c8542b4a5226a9bf",
+            "startTimeUnixNano": "1787770073467715767"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "46488",
+              "spanID": "483d4314aa7ba8e6",
+              "startTimeUnixNano": "1787770073483727089"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "16446404",
+              "spanID": "c8542b4a5226a9bf",
+              "startTimeUnixNano": "1787770073467715767"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770073467715767",
+      "traceID": "f31a24f76c3e0da3bbe141bb6b4da20d"
+    },
+    {
+      "durationMs": 16,
+      "rootServiceName": "edge-demo-service",
+      "rootTraceName": "GET /api/orders/{order_id}",
+      "serviceStats": {
+        "edge-demo-service": {
+          "errorCount": 2,
+          "spanCount": 4
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "73391",
+            "spanID": "36a132f5e5943f6c",
+            "startTimeUnixNano": "1787770073461614535"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "16068165",
+            "spanID": "636cbf98d3cbc345",
+            "startTimeUnixNano": "1787770073446762936"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "73391",
+              "spanID": "36a132f5e5943f6c",
+              "startTimeUnixNano": "1787770073461614535"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "16068165",
+              "spanID": "636cbf98d3cbc345",
+              "startTimeUnixNano": "1787770073446762936"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770073446762936",
+      "traceID": "185316f90405f494464a5224bcb30c2c"
+    },
+    {
+      "durationMs": 17,
+      "rootServiceName": "edge-demo-service",
+      "rootTraceName": "GET /api/orders/{order_id}",
+      "serviceStats": {
+        "edge-demo-service": {
+          "errorCount": 2,
+          "spanCount": 4
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "47855",
+            "spanID": "d8584eb950ee026a",
+            "startTimeUnixNano": "1787770073440394227"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "17936578",
+            "spanID": "2cabcf1ac0eb4195",
+            "startTimeUnixNano": "1787770073422973706"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "47855",
+              "spanID": "d8584eb950ee026a",
+              "startTimeUnixNano": "1787770073440394227"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "17936578",
+              "spanID": "2cabcf1ac0eb4195",
+              "startTimeUnixNano": "1787770073422973706"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770073422973706",
+      "traceID": "ffc1c08c411e8c5c3174eec9427121fd"
+    },
+    {
+      "durationMs": 14,
+      "rootServiceName": "edge-demo-service",
+      "rootTraceName": "GET /api/orders/{order_id}",
+      "serviceStats": {
+        "edge-demo-service": {
+          "errorCount": 2,
+          "spanCount": 4
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "42316",
+            "spanID": "8ef21b961ffc5cbd",
+            "startTimeUnixNano": "1787770073417339546"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "14619615",
+            "spanID": "f390212a649b7c07",
+            "startTimeUnixNano": "1787770073403207749"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "42316",
+              "spanID": "8ef21b961ffc5cbd",
+              "startTimeUnixNano": "1787770073417339546"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "14619615",
+              "spanID": "f390212a649b7c07",
+              "startTimeUnixNano": "1787770073403207749"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770073403207749",
+      "traceID": "96d16719f5a31259501c789a540091b5"
+    },
+    {
+      "durationMs": 18,
+      "rootServiceName": "edge-demo-service",
+      "rootTraceName": "GET /api/orders/{order_id}",
+      "serviceStats": {
+        "edge-demo-service": {
+          "errorCount": 2,
+          "spanCount": 4
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "118173",
+            "spanID": "6f271284e11de2fc",
+            "startTimeUnixNano": "1787770073396307021"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "18904248",
+            "spanID": "6c4fc818a52d2dc9",
+            "startTimeUnixNano": "1787770073378922888"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "118173",
+              "spanID": "6f271284e11de2fc",
+              "startTimeUnixNano": "1787770073396307021"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "18904248",
+              "spanID": "6c4fc818a52d2dc9",
+              "startTimeUnixNano": "1787770073378922888"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770073378922888",
+      "traceID": "fafeab562949a8f1fbcb86eb80bc4b8b"
+    },
+    {
+      "rootServiceName": "telemetrygen-probe",
+      "rootTraceName": "lets-go",
+      "serviceStats": {
+        "telemetrygen-probe": {
+          "errorCount": 2,
+          "spanCount": 2
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "abfbe3500742af91",
+            "startTimeUnixNano": "1787770004674438947"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "5fd57574b5f63124",
+            "startTimeUnixNano": "1787770004674438947"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "abfbe3500742af91",
+              "startTimeUnixNano": "1787770004674438947"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "5fd57574b5f63124",
+              "startTimeUnixNano": "1787770004674438947"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770004674438947",
+      "traceID": "428f96db46e9d45755e3a78c1a67cce1"
+    },
+    {
+      "rootServiceName": "telemetrygen-probe",
+      "rootTraceName": "lets-go",
+      "serviceStats": {
+        "telemetrygen-probe": {
+          "errorCount": 2,
+          "spanCount": 2
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "6b21ac7f17bd8f9a",
+            "startTimeUnixNano": "1787770004674433670"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "6da9c13c51c122a1",
+            "startTimeUnixNano": "1787770004674433670"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "6b21ac7f17bd8f9a",
+              "startTimeUnixNano": "1787770004674433670"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "6da9c13c51c122a1",
+              "startTimeUnixNano": "1787770004674433670"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770004674433670",
+      "traceID": "fb5a22eb61e24a3aa25de41be11f7605"
+    },
+    {
+      "rootServiceName": "telemetrygen-probe",
+      "rootTraceName": "lets-go",
+      "serviceStats": {
+        "telemetrygen-probe": {
+          "errorCount": 2,
+          "spanCount": 2
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "49ab66fa583cc25e",
+            "startTimeUnixNano": "1787770004674410649"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "c933ad4e5224fa58",
+            "startTimeUnixNano": "1787770004674410649"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "49ab66fa583cc25e",
+              "startTimeUnixNano": "1787770004674410649"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "c933ad4e5224fa58",
+              "startTimeUnixNano": "1787770004674410649"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770004674410649",
+      "traceID": "bf38d6ced166861f6b0f68a25e7db633"
+    },
+    {
+      "rootServiceName": "telemetrygen-probe",
+      "rootTraceName": "lets-go",
+      "serviceStats": {
+        "telemetrygen-probe": {
+          "errorCount": 2,
+          "spanCount": 2
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "d549917d37ea4fb4",
+            "startTimeUnixNano": "1787770004674405979"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "bcdc9bc505c5b4bc",
+            "startTimeUnixNano": "1787770004674405979"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "d549917d37ea4fb4",
+              "startTimeUnixNano": "1787770004674405979"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "bcdc9bc505c5b4bc",
+              "startTimeUnixNano": "1787770004674405979"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770004674405979",
+      "traceID": "a7c9b8e3c6c9be707499caea0e4d1717"
+    },
+    {
+      "rootServiceName": "telemetrygen-probe",
+      "rootTraceName": "lets-go",
+      "serviceStats": {
+        "telemetrygen-probe": {
+          "errorCount": 2,
+          "spanCount": 2
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "69b7a484230ad009",
+            "startTimeUnixNano": "1787770004674391629"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "c7b8aa399b3155ae",
+            "startTimeUnixNano": "1787770004674391629"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "69b7a484230ad009",
+              "startTimeUnixNano": "1787770004674391629"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "c7b8aa399b3155ae",
+              "startTimeUnixNano": "1787770004674391629"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770004674391629",
+      "traceID": "ba5660a7334b43ae04ffe609e4c0aced"
+    },
+    {
+      "rootServiceName": "telemetrygen-probe",
+      "rootTraceName": "lets-go",
+      "serviceStats": {
+        "telemetrygen-probe": {
+          "errorCount": 2,
+          "spanCount": 2
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "13803d41029d2710",
+            "startTimeUnixNano": "1787770004674387360"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "87d6a524a768eb47",
+            "startTimeUnixNano": "1787770004674387360"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "13803d41029d2710",
+              "startTimeUnixNano": "1787770004674387360"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "87d6a524a768eb47",
+              "startTimeUnixNano": "1787770004674387360"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770004674387360",
+      "traceID": "f69f251495b9575f89d4c313eb8cb088"
+    },
+    {
+      "rootServiceName": "telemetrygen-probe",
+      "rootTraceName": "lets-go",
+      "serviceStats": {
+        "telemetrygen-probe": {
+          "errorCount": 2,
+          "spanCount": 2
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "e0d9c9d93f2baa4f",
+            "startTimeUnixNano": "1787770004674382793"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "491e65c4ff3ab125",
+            "startTimeUnixNano": "1787770004674382793"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "e0d9c9d93f2baa4f",
+              "startTimeUnixNano": "1787770004674382793"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "491e65c4ff3ab125",
+              "startTimeUnixNano": "1787770004674382793"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770004674382793",
+      "traceID": "8deae80802c76359ad934ecb0bba2280"
+    },
+    {
+      "rootServiceName": "telemetrygen-probe",
+      "rootTraceName": "lets-go",
+      "serviceStats": {
+        "telemetrygen-probe": {
+          "errorCount": 2,
+          "spanCount": 2
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "60098b1402606a9e",
+            "startTimeUnixNano": "1787770004674378380"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "e5bc4c05cfc95f2f",
+            "startTimeUnixNano": "1787770004674378380"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "60098b1402606a9e",
+              "startTimeUnixNano": "1787770004674378380"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "e5bc4c05cfc95f2f",
+              "startTimeUnixNano": "1787770004674378380"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770004674378380",
+      "traceID": "fce9dca14016deaaa4084706c7bc5a9f"
+    },
+    {
+      "rootServiceName": "telemetrygen-probe",
+      "rootTraceName": "lets-go",
+      "serviceStats": {
+        "telemetrygen-probe": {
+          "errorCount": 2,
+          "spanCount": 2
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "1ce5104aa590ed05",
+            "startTimeUnixNano": "1787770004674374019"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "05724278112b8e51",
+            "startTimeUnixNano": "1787770004674374019"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "1ce5104aa590ed05",
+              "startTimeUnixNano": "1787770004674374019"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "05724278112b8e51",
+              "startTimeUnixNano": "1787770004674374019"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770004674374019",
+      "traceID": "316f8a691e8562f44a5abd03bf71355b"
+    },
+    {
+      "rootServiceName": "telemetrygen-probe",
+      "rootTraceName": "lets-go",
+      "serviceStats": {
+        "telemetrygen-probe": {
+          "errorCount": 2,
+          "spanCount": 2
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "9871f45c7387040c",
+            "startTimeUnixNano": "1787770004674369606"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "fd472df40e4a9fe8",
+            "startTimeUnixNano": "1787770004674369606"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "9871f45c7387040c",
+              "startTimeUnixNano": "1787770004674369606"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "fd472df40e4a9fe8",
+              "startTimeUnixNano": "1787770004674369606"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770004674369606",
+      "traceID": "ac7e33d6ab7780f4199c7df178ba0d2a"
+    },
+    {
+      "rootServiceName": "telemetrygen-probe",
+      "rootTraceName": "lets-go",
+      "serviceStats": {
+        "telemetrygen-probe": {
+          "errorCount": 2,
+          "spanCount": 2
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "70b28f889f09c4ea",
+            "startTimeUnixNano": "1787770004674364864"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "60508301772f3ed9",
+            "startTimeUnixNano": "1787770004674364864"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "70b28f889f09c4ea",
+              "startTimeUnixNano": "1787770004674364864"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "60508301772f3ed9",
+              "startTimeUnixNano": "1787770004674364864"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770004674364864",
+      "traceID": "b43f8944e44ef2ad8355a3389d9bf7db"
+    },
+    {
+      "rootServiceName": "telemetrygen-probe",
+      "rootTraceName": "lets-go",
+      "serviceStats": {
+        "telemetrygen-probe": {
+          "errorCount": 2,
+          "spanCount": 2
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "cb3ab7ae50fe866d",
+            "startTimeUnixNano": "1787770004674331114"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "ed8c3b3ec0c29f20",
+            "startTimeUnixNano": "1787770004674331114"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "cb3ab7ae50fe866d",
+              "startTimeUnixNano": "1787770004674331114"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "ed8c3b3ec0c29f20",
+              "startTimeUnixNano": "1787770004674331114"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770004674331114",
+      "traceID": "b27dc31f418eb5a9454eccb9043d5f4c"
+    },
+    {
+      "rootServiceName": "telemetrygen-probe",
+      "rootTraceName": "lets-go",
+      "serviceStats": {
+        "telemetrygen-probe": {
+          "errorCount": 2,
+          "spanCount": 2
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "51329c870a020a3b",
+            "startTimeUnixNano": "1787770004674307568"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "1abf9e4f92be16cc",
+            "startTimeUnixNano": "1787770004674307568"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "51329c870a020a3b",
+              "startTimeUnixNano": "1787770004674307568"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "1abf9e4f92be16cc",
+              "startTimeUnixNano": "1787770004674307568"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770004674307568",
+      "traceID": "677492abe5b63f8f40d4d6f0a80393cb"
+    },
+    {
+      "rootServiceName": "telemetrygen-probe",
+      "rootTraceName": "lets-go",
+      "serviceStats": {
+        "telemetrygen-probe": {
+          "errorCount": 2,
+          "spanCount": 2
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "1cd3add2685f8642",
+            "startTimeUnixNano": "1787770004674292951"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "2273027df208a9a5",
+            "startTimeUnixNano": "1787770004674292951"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "1cd3add2685f8642",
+              "startTimeUnixNano": "1787770004674292951"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "2273027df208a9a5",
+              "startTimeUnixNano": "1787770004674292951"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770004674292951",
+      "traceID": "e37feb7d42726e993bc2da05536be5b5"
+    },
+    {
+      "rootServiceName": "telemetrygen-probe",
+      "rootTraceName": "lets-go",
+      "serviceStats": {
+        "telemetrygen-probe": {
+          "errorCount": 2,
+          "spanCount": 2
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "21c871f282ccac5d",
+            "startTimeUnixNano": "1787770004674288476"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "6b75a58e1527d5d8",
+            "startTimeUnixNano": "1787770004674288476"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "21c871f282ccac5d",
+              "startTimeUnixNano": "1787770004674288476"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "6b75a58e1527d5d8",
+              "startTimeUnixNano": "1787770004674288476"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770004674288476",
+      "traceID": "eefe28b80287a47682618a7577dc9a6c"
+    },
+    {
+      "rootServiceName": "telemetrygen-probe",
+      "rootTraceName": "lets-go",
+      "serviceStats": {
+        "telemetrygen-probe": {
+          "errorCount": 2,
+          "spanCount": 2
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "84532945b783add5",
+            "startTimeUnixNano": "1787770004674277665"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "b947a5e2d6e6466a",
+            "startTimeUnixNano": "1787770004674277665"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "84532945b783add5",
+              "startTimeUnixNano": "1787770004674277665"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "b947a5e2d6e6466a",
+              "startTimeUnixNano": "1787770004674277665"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770004674277665",
+      "traceID": "301370ad4001da49df96159fdfbdda93"
+    },
+    {
+      "rootServiceName": "telemetrygen-probe",
+      "rootTraceName": "lets-go",
+      "serviceStats": {
+        "telemetrygen-probe": {
+          "errorCount": 2,
+          "spanCount": 2
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "d1faece399c1556f",
+            "startTimeUnixNano": "1787770004674272717"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "c60c03f59370f441",
+            "startTimeUnixNano": "1787770004674272717"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "d1faece399c1556f",
+              "startTimeUnixNano": "1787770004674272717"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "c60c03f59370f441",
+              "startTimeUnixNano": "1787770004674272717"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770004674272717",
+      "traceID": "cfd49439cd5341668e0b5ed371a6a831"
+    },
+    {
+      "rootServiceName": "telemetrygen-probe",
+      "rootTraceName": "lets-go",
+      "serviceStats": {
+        "telemetrygen-probe": {
+          "errorCount": 2,
+          "spanCount": 2
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "5029842b546e5d3f",
+            "startTimeUnixNano": "1787770004674253276"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "2b3366c0ec920b4a",
+            "startTimeUnixNano": "1787770004674253276"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "5029842b546e5d3f",
+              "startTimeUnixNano": "1787770004674253276"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "2b3366c0ec920b4a",
+              "startTimeUnixNano": "1787770004674253276"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770004674253276",
+      "traceID": "cf57f6031f28a7634712961f3c131ad1"
+    },
+    {
+      "rootServiceName": "telemetrygen-probe",
+      "rootTraceName": "lets-go",
+      "serviceStats": {
+        "telemetrygen-probe": {
+          "errorCount": 2,
+          "spanCount": 2
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "e4255a6b8e1964e5",
+            "startTimeUnixNano": "1787770004674243061"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "ddb6b20e6eead6a5",
+            "startTimeUnixNano": "1787770004674243061"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "e4255a6b8e1964e5",
+              "startTimeUnixNano": "1787770004674243061"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "ddb6b20e6eead6a5",
+              "startTimeUnixNano": "1787770004674243061"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770004674243061",
+      "traceID": "a847efad1aa44a6d6758803f9d180ad"
+    },
+    {
+      "rootServiceName": "telemetrygen-probe",
+      "rootTraceName": "lets-go",
+      "serviceStats": {
+        "telemetrygen-probe": {
+          "errorCount": 2,
+          "spanCount": 2
+        }
+      },
+      "spanSet": {
+        "matched": 2,
+        "spans": [
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "d2291012f6da7bda",
+            "startTimeUnixNano": "1787770004671085117"
+          },
+          {
+            "attributes": [
+              {
+                "key": "status",
+                "value": {
+                  "stringValue": "error"
+                }
+              }
+            ],
+            "durationNanos": "123000",
+            "spanID": "ffc4be02ea775cca",
+            "startTimeUnixNano": "1787770004671085117"
+          }
+        ]
+      },
+      "spanSets": [
+        {
+          "matched": 2,
+          "spans": [
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "d2291012f6da7bda",
+              "startTimeUnixNano": "1787770004671085117"
+            },
+            {
+              "attributes": [
+                {
+                  "key": "status",
+                  "value": {
+                    "stringValue": "error"
+                  }
+                }
+              ],
+              "durationNanos": "123000",
+              "spanID": "ffc4be02ea775cca",
+              "startTimeUnixNano": "1787770004671085117"
+            }
+          ]
+        }
+      ],
+      "startTimeUnixNano": "1787770004671085117",
+      "traceID": "c9d285ff5c91cfbf85cd01ee276d0f51"
+    }
+  ]
+}
