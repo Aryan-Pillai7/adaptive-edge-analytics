@@ -1,0 +1,21 @@
+# The rollup job runs on Windows/Git Bash locally and on Linux in CI, and its shell
+# entrypoints are executed by cron on whichever host schedules it. A CRLF line ending
+# inside a shell script fails as `\r: command not found`. Force LF regardless of the
+# contributor's platform or core.autocrlf setting.
+* text=auto eol=lf
+
+*.sh        text eol=lf
+*.yaml      text eol=lf
+*.yml       text eol=lf
+*.py        text eol=lf
+*.toml      text eol=lf
+*.md        text eol=lf
+*.sql       text eol=lf
+
+# Never touch binaries. Parquet fixtures in particular must survive byte-for-byte --
+# a normalised .parquet is a corrupt .parquet.
+*.parquet   binary
+*.db        binary
+*.png       binary
+*.jpg       binary
+*.gz        binary

@@ -216,3 +216,13 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# --- adaptive-edge-analytics: agent/local working files (never committed) ---
+CLAUDE.md
+plan.md
+decisions.md
+
+# Local config + runtime state
+.env
+data/
+.rollup-state/

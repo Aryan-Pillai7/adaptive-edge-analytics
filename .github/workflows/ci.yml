@@ -1,0 +1,81 @@
+# CI is scoped to checks that would actually have caught a real break in this repo.
+#
+# Two jobs for now, cheapest first:
+#
+#   lint   seconds   — yaml, ruff, shellcheck
+#   unit   seconds   — aggregation logic against fixtures, no stack, no network
+#
+# A third `integration` job lands in Phase 3, once there is a rollup to run end to end
+# against a live stack. It is deliberately absent until then: CI that only ever asserts
+# "nothing is implemented yet" is CI for its own sake.
+#
+# The unit job is the one that matters most here. The failure modes this project has to
+# avoid — double-counting across runs, missing data at a tier boundary, schema drift —
+# are all logic bugs reproducible from fixtures, without a single container running.
+
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"   # the interpreter the primary dev machine runs
+
+      - name: install lint deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml ruff
+          sudo apt-get update && sudo apt-get install -y shellcheck
+
+      - name: lint
+        run: bash scripts/lint.sh
+
+  unit:
+    name: unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: pyproject.toml
+
+      - name: install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      # Unit tests only. tests/integration/ needs the sibling adaptive-edge-otel stack,
+      # which does not exist on a runner — and `-m "not integration"` here means a
+      # forgotten marker shows up as an ImportError in CI rather than as a job that
+      # quietly tries to reach localhost:8428 and times out.
+      - name: unit tests
+        run: python -m pytest tests/unit -q
+
+      # The CLI is what cron actually invokes. A package that imports fine but whose
+      # entrypoint fails to build its parser is a broken deploy, and it is one second
+      # to rule out.
+      - name: entrypoint smoke
+        run: |
+          edge-rollup --version
+          edge-rollup --help > /dev/null
+          edge-rollup status

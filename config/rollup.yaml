@@ -1,0 +1,84 @@
+# What gets rolled up, at what granularity, into which dimensions.
+#
+# This file is the shape of the pipeline. Endpoints and paths live in the environment
+# (see .env.example) because they change per host; this changes the data itself, so it
+# lives in version control where a change shows up in a diff.
+#
+# Adding a granularity is an entry under `granularities`. Adding a signal is an entry
+# here plus one file in src/edgerollup/rollups/ -- never a change to the pipeline core.
+
+schema_version: 1
+
+# Every rolled-up series carries this as a `rollup_schema` label and as a Parquet column.
+# When the aggregation output shape changes incompatibly, bump it: consumers can then
+# tell an old summary from a new one instead of silently averaging across a schema
+# change. See src/edgerollup/schema.py (Phase 3).
+
+# --- granularities -----------------------------------------------------------
+# Bucket widths, coarsest last. `1h` is the primary tier -- it matches the hourly cron
+# cadence, so a normal run seals exactly one bucket per signal.
+#
+# `retain` is how long the cold tier keeps each granularity. Hourly rollups are cheap
+# but not free; daily rollups are cheap enough to keep effectively forever at this
+# volume. Both are far longer than any hot retention (VM 3d, Tempo 24h), which is the
+# entire point of the exercise.
+granularities:
+  - name: 1h
+    seconds: 3600
+    retain: 90d
+  - name: 1d
+    seconds: 86400
+    retain: 730d
+
+# --- dimensions --------------------------------------------------------------
+# The label set every rollup is grouped by, before signal-specific dimensions are added.
+#
+# `service_instance_id` is deliberately ABSENT. It is a UUID regenerated on every
+# application restart, so keeping it as a rollup dimension would grow cold-tier
+# cardinality without bound in proportion to restart count -- the exact failure the
+# upstream project exists to prevent, reproduced in the tier that is supposed to be
+# cheap and long-lived. See decisions.md D-005.
+#
+# `run_id` is also absent, for a duller reason: it does not exist on app telemetry. It
+# appears only on the sibling project's telemetrygen verification runs.
+common_dimensions:
+  - service_name
+  - deployment_environment
+
+# --- signals -----------------------------------------------------------------
+signals:
+
+  metrics:
+    enabled: true
+    source: victoriametrics
+    # Raw resolution is ~15s. Aggregating to 1h is a 240:1 reduction before any
+    # cardinality effects.
+    dimensions: [route, method, status]
+    sinks: [victoriametrics, parquet]
+
+  logs:
+    enabled: true
+    source: loki
+    # Counts by severity per bucket -- NOT literal log-line aggregation. A rolled-up log
+    # tier answers "how much, of what kind, when", not "what did line 4,812 say"; the
+    # latter is what the hot tier is for, and is exactly what expires.
+    #
+    # NOTE: severity is Loki STRUCTURED METADATA here, not an indexed stream label. The
+    # only indexed labels are service_name, deployment_environment, service_instance_id.
+    # The source adapter parses it; it cannot be label-matched.
+    dimensions: [severity_text]
+    sinks: [loki, parquet]
+
+  traces:
+    enabled: true
+    source: tempo
+    # Latency distribution and error rate per service per bucket.
+    #
+    # Computed CLIENT-SIDE. Tempo's TraceQL metrics API returns `empty ring` on this
+    # stack because metrics_generator is deliberately disabled upstream, so there is no
+    # server-side shortcut and re-enabling it would cut against the sibling's thesis.
+    dimensions: [root_service_name, root_name, status]
+    percentiles: [50, 90, 95, 99]
+    # Output is METRICS, so it goes to VictoriaMetrics -- never back into Tempo, which
+    # has no host write path and must not get one.
+    sinks: [victoriametrics, parquet]
