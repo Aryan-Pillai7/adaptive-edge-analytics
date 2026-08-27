@@ -15,13 +15,17 @@ import argparse
 import json
 import logging
 import sys
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 
 from edgerollup import __version__
-from edgerollup.config import SIGNALS, Settings
+from edgerollup.clock import SystemClock
+from edgerollup.config import SIGNALS, Settings, load_rollup_config
 from edgerollup.model import TimeRange
+from edgerollup.pipeline import NOOP_WRITER, run_signal
 from edgerollup.registry import open_sources
 from edgerollup.sources import SourceError
+from edgerollup.state import COMMITTED, FAILED, StateStore
+from edgerollup.windows import Granularity, watermark
 
 log = logging.getLogger("edgerollup")
 
@@ -137,18 +141,94 @@ def cmd_status(args: argparse.Namespace) -> int:
     print("cold tier (sinks)")
     print(f"  parquet root     {settings.parquet_root}")
     print(f"  checkpoint store {settings.state_dir}")
+    granularities = _granularities()
+
     print()
     print("hot/cold boundary")
     for signal in SIGNALS:
         grace = settings.grace(signal)
-        sealed_before = now - grace
-        print(
-            f"  {signal:<8} grace {grace!s:>8}"
-            f"   sealed up to {sealed_before.isoformat(timespec='seconds')}"
+        marks = ", ".join(
+            f"{g.name} < {watermark(now, grace, g).isoformat(timespec='seconds')}"
+            for g in granularities
         )
+        print(f"  {signal:<8} grace {grace!s:>8}   sealed: {marks}")
+
     print()
-    print("checkpoints      (Phase 2)")
+    print("checkpoints")
+    with StateStore(settings.state_dir / "checkpoints.db") as store:
+        marks = store.frontiers()
+        for signal_name, gran_name, writer, mark in marks:
+            print(
+                f"  {signal_name:<8} {gran_name:<4} {writer:<10} next bucket "
+                f"{mark.isoformat(timespec='seconds')}"
+            )
+        if not marks:
+            print("  none yet — nothing has been rolled up")
+
+        # A stalled frontier is the one condition an operator must not have to go
+        # looking for: newer buckets keep succeeding, so throughput looks healthy while
+        # one bucket silently holds the checkpoint back.
+        stuck = store.buckets(status=FAILED)
+        if stuck:
+            print()
+            print(f"  {len(stuck)} FAILED bucket(s) blocking the frontier:")
+            for record in stuck[:10]:
+                print(
+                    f"    {record.signal}/{record.granularity} "
+                    f"{record.bucket_start.isoformat(timespec='seconds')} "
+                    f"(attempt {record.attempts}): {record.last_error}"
+                )
+
+        done = store.buckets(status=COMMITTED)
+        if done:
+            writers = sorted({r.writer_version or "unknown" for r in done})
+            print()
+            print(f"  {len(done)} bucket(s) committed by: {', '.join(writers)}")
+            if NOOP_WRITER in writers:
+                # Worth saying plainly: these buckets are checkpointed but hold no
+                # rollup output, and a real writer will redo them. Without this line,
+                # "23 buckets committed" reads as work that was actually done.
+                print(
+                    f"  note: {NOOP_WRITER} writes no rollup output — those buckets are "
+                    f"re-processed once a real writer runs"
+                )
     return 0
+
+
+def _granularities() -> list[Granularity]:
+    return [Granularity.from_config(entry) for entry in load_rollup_config()["granularities"]]
+
+
+def cmd_run(args: argparse.Namespace) -> int:
+    """Roll up every sealed bucket since the last checkpoint. The cron verb."""
+    settings = Settings()
+    clock = SystemClock()
+    signals = args.signal or list(SIGNALS)
+    granularities = _granularities()
+
+    failures = 0
+    with (
+        open_sources(settings) as sources,
+        StateStore(settings.state_dir / "checkpoints.db") as store,
+    ):
+        for signal in signals:
+            for granularity in granularities:
+                report = run_signal(
+                    signal=signal,
+                    granularity=granularity,
+                    source=sources[signal],
+                    store=store,
+                    clock=clock,
+                    grace=settings.grace(signal),
+                    max_backfill=timedelta(hours=settings.max_backfill_hours),
+                    dry_run=args.dry_run,
+                )
+                log.info("%s%s", "[dry-run] " if args.dry_run else "", report.summary())
+                failures += len(report.failed)
+
+    # Exit 5 rather than 0-with-a-warning: under cron, a non-zero exit is the only thing
+    # anyone will notice, and a bucket that failed is a hole in the cold tier.
+    return 5 if failures else 0
 
 
 def cmd_probe(args: argparse.Namespace) -> int:
@@ -197,7 +277,7 @@ def _not_yet(phase: str):
 HANDLERS = {
     "status": cmd_status,
     "probe": cmd_probe,
-    "run": _not_yet("the aggregation milestone"),
+    "run": cmd_run,
     "backfill": _not_yet("the aggregation milestone"),
 }
 
