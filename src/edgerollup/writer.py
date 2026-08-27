@@ -39,10 +39,11 @@ trace.
 from __future__ import annotations
 
 import logging
+from collections import Counter
 
 from edgerollup.model import RawRecord, TimeRange
 from edgerollup.rollups.base import Rollup
-from edgerollup.schema import SCHEMA_VERSION, detect_drift
+from edgerollup.schema import SCHEMA_VERSION, RollupRow, detect_drift
 from edgerollup.sinks.base import Sink, SinkError
 from edgerollup.windows import Granularity
 
@@ -90,6 +91,7 @@ class RollupWriter:
             log.warning("schema drift: %s", message)
 
         rows = self.rollup.aggregate(granularity, bucket, records)
+        _assert_unique_keys(rows, signal, granularity, bucket)
 
         written: list[str] = []
         for sink in self.sinks:
@@ -109,3 +111,32 @@ class RollupWriter:
         # Every sink returned, which by the Sink contract means every sink is durable.
         # Only now may pipeline.py commit.
         return len(rows)
+
+
+def _assert_unique_keys(
+    rows: list[RollupRow], signal: str, granularity: Granularity, bucket: TimeRange
+) -> None:
+    """No two rows in a bucket may share a key.
+
+    The output-side mirror of the read layer's identity-collision guard, and it exists
+    for the same reason: a duplicate key is not an error anywhere downstream, it is a
+    quietly wrong number. In Parquet it is a duplicated row; in VictoriaMetrics it is two
+    samples at one timestamp where the query layer returns one arbitrarily, halving the
+    figure.
+
+    The way this happens in practice is normalising a dimension AFTER grouping rather
+    than while building the key -- `ERROR` and `Error` grouped separately, then both
+    labelled `error`. See rollups/logs.py.
+    """
+    counts = Counter((row.metric, row.dimensions) for row in rows)
+    duplicates = [key for key, n in counts.items() if n > 1]
+    if duplicates:
+        metric, dimensions = duplicates[0]
+        raise SinkError(
+            f"{signal}/{granularity.name} {bucket.start.isoformat()}: "
+            f"{len(duplicates)} rollup key(s) produced more than one row "
+            f"(e.g. metric={metric!r} dimensions={dict(dimensions)}). "
+            f"These would overwrite or double-count each other in the sinks. "
+            f"Most likely a dimension is being normalised after grouping instead of "
+            f"while the grouping key is built."
+        )
