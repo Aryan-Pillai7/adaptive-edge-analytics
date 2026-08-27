@@ -59,10 +59,6 @@ acquire_lock() {
   return 1
 }
 
-# Invoked only from the trap below, which shellcheck cannot see.
-# shellcheck disable=SC2329
-release_lock() { rm -rf "$LOCK_DIR"; }
-
 # --- python -----------------------------------------------------------------
 py() {
   if [[ -x "$REPO_ROOT/.venv/Scripts/python.exe" ]]; then
@@ -82,7 +78,12 @@ if ! acquire_lock; then
 fi
 # Released on every exit path, including a signal. Without this a killed run leaves the
 # lock behind and every subsequent run skips until the staleness timeout expires.
-trap release_lock EXIT INT TERM
+#
+# Inline rather than a release_lock() function: a function called only from a trap looks
+# unreachable to shellcheck, and the two versions in play disagree about which code to
+# report it under (SC2329 locally, SC2317 in CI). One command needs no wrapper anyway.
+# Single-quoted so $LOCK_DIR expands when the trap fires, not when it is installed.
+trap 'rm -rf "$LOCK_DIR"' EXIT INT TERM
 
 log "starting (args: ${*:-none})"
 started_at=$(date -u +%s)

@@ -48,11 +48,19 @@ jobs:
         with:
           python-version: "3.11"   # the interpreter the primary dev machine runs
 
+      # Deliberately does NOT apt-get shellcheck. scripts/lint.sh falls back to a PINNED
+      # Docker image when no shellcheck binary is on PATH, and runners have Docker — so
+      # skipping the install is what makes CI and a developer's machine run the same
+      # version.
+      #
+      # They previously did not. Ubuntu's packaged shellcheck reported an unreachable
+      # function as SC2317 while the pinned v0.11.0 reported the same finding as SC2329,
+      # so a suppression that silenced it locally still failed CI. A lint that disagrees
+      # with itself across environments is worse than a slightly slower one.
       - name: install lint deps
         run: |
           python -m pip install --upgrade pip
           pip install pyyaml ruff
-          sudo apt-get update && sudo apt-get install -y shellcheck
 
       - name: lint
         run: bash scripts/lint.sh
