@@ -77,6 +77,9 @@ class TestRollupConfig:
         for signal in config["signals"].values():
             every_dimension.update(signal.get("dimensions", []))
 
+        # Non-emptiness first (D-022): with no dimensions configured at all, the two
+        # assertions below would pass while proving nothing.
+        assert len(every_dimension) >= 5, f"suspiciously few dimensions: {every_dimension}"
         assert "service_instance_id" not in every_dimension
         assert "run_id" not in every_dimension
 

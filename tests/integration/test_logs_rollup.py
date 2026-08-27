@@ -143,7 +143,10 @@ class TestNoFeedbackLoop:
 
         now = SystemClock().now()
         window = TimeRange(now - timedelta(hours=3), now - settings.grace(SIGNAL) * 2)
-        for record in sources[SIGNAL].read(window):
+        records = sources[SIGNAL].read(window)
+        if not records:
+            pytest.skip("no raw data in the window — nothing to check for feedback")
+        for record in records:
             assert record.dims().get("tier") != "cold"
 
 
