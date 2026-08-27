@@ -26,7 +26,6 @@ from edgerollup.writer import RollupWriter, writer_version
 pytestmark = pytest.mark.integration
 
 HOUR = Granularity("1h", 3600)
-BACKFILL = timedelta(hours=3)
 SIGNAL = "metrics"
 
 
@@ -47,7 +46,7 @@ def rollup_writer(sinks: list[Sink]) -> RollupWriter:
     return RollupWriter(MetricsRollup(dimensions_for(SIGNAL)), sinks)
 
 
-def go(store, sources, settings, sinks, **kwargs):
+def go(store, sources, settings, backfill_for, sinks, **kwargs):
     return run_signal(
         signal=SIGNAL,
         granularity=HOUR,
@@ -55,7 +54,7 @@ def go(store, sources, settings, sinks, **kwargs):
         store=store,
         clock=SystemClock(),
         grace=settings.grace(SIGNAL),
-        max_backfill=BACKFILL,
+        max_backfill=backfill_for[SIGNAL],
         processor=rollup_writer(sinks),
         writer_version=writer_version(SIGNAL),
         **kwargs,
@@ -63,21 +62,23 @@ def go(store, sources, settings, sinks, **kwargs):
 
 
 class TestRollupIsIdempotent:
-    def test_running_twice_writes_the_same_parquet_bytes(self, store, sources, settings, parquet):
+    def test_running_twice_writes_the_same_parquet_bytes(
+        self, store, sources, settings, parquet, backfill_for
+    ):
         """Byte-identical, not just semantically equal.
 
         With one file per bucket and an atomic replace, a re-run must be a true no-op on
         disk. Anything else means a retry after a partial dual-write leaves the
         authoritative copy in a different state than the first attempt did.
         """
-        first = go(store, sources, settings, [parquet])
+        first = go(store, sources, settings, backfill_for, [parquet])
         assert first.processed, "nothing sealed to roll up"
 
         before = {path: path.read_bytes() for path in sorted(parquet.root.rglob("*.parquet"))}
         assert before, "no parquet files were written"
 
         store.reset(SIGNAL)
-        go(store, sources, settings, [parquet])
+        go(store, sources, settings, backfill_for, [parquet])
 
         after = {path: path.read_bytes() for path in sorted(parquet.root.rglob("*.parquet"))}
         assert after.keys() == before.keys(), "a re-run changed which files exist"
@@ -85,33 +86,37 @@ class TestRollupIsIdempotent:
             assert after[path] == content, f"{path.name} changed on re-run"
 
     def test_a_second_run_without_reset_does_nothing_at_all(
-        self, store, sources, settings, parquet
+        self, store, sources, settings, parquet, backfill_for
     ):
-        go(store, sources, settings, [parquet])
-        second = go(store, sources, settings, [parquet])
+        go(store, sources, settings, backfill_for, [parquet])
+        second = go(store, sources, settings, backfill_for, [parquet])
         assert second.processed == []
         assert second.records_written == 0
 
-    def test_rewriting_a_bucket_does_not_accumulate_rows(self, store, sources, settings, parquet):
+    def test_rewriting_a_bucket_does_not_accumulate_rows(
+        self, store, sources, settings, parquet, backfill_for
+    ):
         """The double-counting check, at the file level."""
-        go(store, sources, settings, [parquet])
+        go(store, sources, settings, backfill_for, [parquet])
         paths = sorted(parquet.root.rglob("*.parquet"))
         counts_before = {p: pq.read_table(p).num_rows for p in paths}
 
         for _ in range(2):
             store.reset(SIGNAL)
-            go(store, sources, settings, [parquet])
+            go(store, sources, settings, backfill_for, [parquet])
 
         for path, expected in counts_before.items():
             assert pq.read_table(path).num_rows == expected, f"{path.name} grew on re-run"
 
 
 class TestNoFeedbackLoop:
-    def test_the_source_never_reads_the_cold_tier_back_in(self, store, sources, settings, parquet):
+    def test_the_source_never_reads_the_cold_tier_back_in(
+        self, store, sources, settings, parquet, backfill_for
+    ):
         """Caught by running it: the first version's selector matched everything, so a
         second pass found `aea_rollup_edgeapp_requests_total_delta` in its own input and
         started rolling up its own rollups."""
-        go(store, sources, settings, [parquet])
+        go(store, sources, settings, backfill_for, [parquet])
 
         seen_metrics = set()
         for path in parquet.root.rglob("*.parquet"):
@@ -132,11 +137,13 @@ class TestNoFeedbackLoop:
 
 
 class TestTheRollupActuallyReduces:
-    def test_output_rows_are_far_fewer_than_input_records(self, store, sources, settings, parquet):
+    def test_output_rows_are_far_fewer_than_input_records(
+        self, store, sources, settings, parquet, backfill_for
+    ):
         """The point of the whole exercise, asserted rather than assumed."""
         from edgerollup.model import TimeRange
 
-        report = go(store, sources, settings, [parquet])
+        report = go(store, sources, settings, backfill_for, [parquet])
         if not report.processed:
             pytest.skip("nothing sealed to roll up")
 
@@ -146,7 +153,9 @@ class TestTheRollupActuallyReduces:
         assert rolled > 0
         assert rolled < raw, f"no reduction: {rolled} rows from {raw} records"
 
-    def test_every_raw_record_is_accounted_for_in_a_row(self, store, sources, settings, parquet):
+    def test_every_raw_record_is_accounted_for_in_a_row(
+        self, store, sources, settings, parquet, backfill_for
+    ):
         """Reduction must be aggregation, not loss.
 
         The summed `count` across rows has to equal the number of raw records that went
@@ -154,7 +163,7 @@ class TestTheRollupActuallyReduces:
         """
         from edgerollup.model import TimeRange
 
-        report = go(store, sources, settings, [parquet])
+        report = go(store, sources, settings, backfill_for, [parquet])
         if not report.processed:
             pytest.skip("nothing sealed to roll up")
 
@@ -168,7 +177,7 @@ class TestTheRollupActuallyReduces:
 
 class TestDualWriteAgainstRealSinks:
     def test_a_failing_second_sink_leaves_the_bucket_uncommitted(
-        self, store, sources, settings, parquet
+        self, store, sources, settings, parquet, backfill_for
     ):
         """The dual-write rule, with a real Parquet write in front of the failure.
 
@@ -183,7 +192,7 @@ class TestDualWriteAgainstRealSinks:
             def write(self, *args):
                 raise RuntimeError("simulated sink outage")
 
-        report = go(store, sources, settings, [parquet, Exploding()], max_buckets=1)
+        report = go(store, sources, settings, backfill_for, [parquet, Exploding()], max_buckets=1)
 
         assert report.processed == []
         assert report.failed, "the failure was not recorded"
@@ -192,7 +201,7 @@ class TestDualWriteAgainstRealSinks:
         assert list(parquet.root.rglob("*.parquet")), "the first sink should have written"
 
     def test_the_error_names_the_sink_that_had_already_succeeded(
-        self, store, sources, settings, parquet
+        self, store, sources, settings, parquet, backfill_for
     ):
         class Exploding(Sink):
             name = "exploding"
@@ -200,13 +209,13 @@ class TestDualWriteAgainstRealSinks:
             def write(self, *args):
                 raise RuntimeError("boom")
 
-        report = go(store, sources, settings, [parquet, Exploding()], max_buckets=1)
+        report = go(store, sources, settings, backfill_for, [parquet, Exploding()], max_buckets=1)
         _, message = report.failed[0]
         assert "parquet" in message
         assert "NOT committed" in message
 
     def test_the_retry_after_a_partial_write_succeeds_cleanly(
-        self, store, sources, settings, parquet
+        self, store, sources, settings, parquet, backfill_for
     ):
         class Flaky(Sink):
             name = "flaky"
@@ -221,8 +230,8 @@ class TestDualWriteAgainstRealSinks:
                 return 0
 
         flaky = Flaky()
-        go(store, sources, settings, [parquet, flaky], max_buckets=1)
-        second = go(store, sources, settings, [parquet, flaky], max_buckets=1)
+        go(store, sources, settings, backfill_for, [parquet, flaky], max_buckets=1)
+        second = go(store, sources, settings, backfill_for, [parquet, flaky], max_buckets=1)
 
         assert second.processed, "the bucket was not retried"
         assert store.buckets(SIGNAL, COMMITTED), "the retry did not commit"
@@ -230,14 +239,17 @@ class TestDualWriteAgainstRealSinks:
 
 class TestVictoriaMetricsProjection:
     def test_rollups_are_written_under_their_own_name_and_tier(
-        self, store, sources, settings, parquet, tmp_path
+        self, store, sources, settings, parquet, backfill_for, tmp_path
     ):
         """Cold data must be impossible to confuse with raw (D-003)."""
         with httpx.Client(timeout=settings.http_timeout_seconds) as client:
             vm = VictoriaMetricsSink(settings.victoriametrics_url, client)
-            report = go(store, sources, settings, [parquet, vm], max_buckets=2)
-            if not report.processed:
-                pytest.skip("nothing sealed to roll up")
+            report = go(store, sources, settings, backfill_for, [parquet, vm])
+            if not report.records_written:
+                # Buckets may have been processed and all been empty. Asserting on a
+                # read-back then tests nothing -- the same trap the derived backfill
+                # horizon exists to avoid.
+                pytest.skip("no metric rollup rows were written in this window")
 
             # Read back through the query API rather than trusting the write's 204.
             response = client.get(

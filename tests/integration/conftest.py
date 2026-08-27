@@ -77,3 +77,29 @@ def settled_window(settings: Settings, sources) -> dict[str, tuple[datetime, dat
                 break
 
     return windows
+
+
+@pytest.fixture(scope="session")
+def backfill_for(settled_window, settings: Settings) -> dict[str, timedelta]:
+    """A backfill horizon per signal that actually reaches that signal's data.
+
+    A fixed horizon looks fine until the stack has been idle for a few hours, at which
+    point the rollup suites process a run of empty buckets and assert on nothing. That is
+    the same trap the read gate hit: a suite that quietly tests an empty window is not
+    testing anything.
+
+    So the horizon is derived from where data was actually found, using the same hunted
+    window the read gate uses. Capped at Tempo's 24h block retention, since nothing
+    older is reachable in any backend here.
+    """
+    now = datetime.now(UTC)
+    horizons: dict[str, timedelta] = {}
+    for signal in ("metrics", "logs", "traces"):
+        found = settled_window.get(signal)
+        if found is None:
+            horizons[signal] = timedelta(hours=3)
+            continue
+        start, _ = found
+        # Reach one bucket beyond the populated window's start, bounded.
+        horizons[signal] = min((now - start) + WINDOW, timedelta(hours=MAX_LOOKBACK_HOURS))
+    return horizons

@@ -21,7 +21,6 @@ from edgerollup.writer import RollupWriter, writer_version
 pytestmark = pytest.mark.integration
 
 HOUR = Granularity("1h", 3600)
-BACKFILL = timedelta(hours=4)
 SIGNAL = "logs"
 
 
@@ -36,7 +35,7 @@ def parquet(tmp_path) -> ParquetSink:
     return ParquetSink(tmp_path / "cold")
 
 
-def go(store, sources, settings, sinks: list[Sink], **kwargs):
+def go(store, sources, settings, backfill_for, sinks: list[Sink], **kwargs):
     return run_signal(
         signal=SIGNAL,
         granularity=HOUR,
@@ -44,7 +43,7 @@ def go(store, sources, settings, sinks: list[Sink], **kwargs):
         store=store,
         clock=SystemClock(),
         grace=settings.grace(SIGNAL),
-        max_backfill=BACKFILL,
+        max_backfill=backfill_for[SIGNAL],
         processor=RollupWriter(LogsRollup(dimensions_for(SIGNAL)), sinks),
         writer_version=writer_version(SIGNAL),
         **kwargs,
@@ -64,12 +63,14 @@ def all_rows(parquet: ParquetSink):
 
 
 class TestSeverityNormalisationOnRealData:
-    def test_no_two_rows_in_a_bucket_share_a_key(self, store, sources, settings, parquet):
+    def test_no_two_rows_in_a_bucket_share_a_key(
+        self, store, sources, settings, parquet, backfill_for
+    ):
         """The guard runs inside the writer, so reaching here at all means it passed --
         but asserting it on real data is what makes that meaningful. Raw Loki carries
         both ERROR and Error (F-009), which is precisely the input that produces two
         colliding rows if casing is folded after grouping instead of before."""
-        report = go(store, sources, settings, [parquet])
+        report = go(store, sources, settings, backfill_for, [parquet])
         if not report.processed:
             pytest.skip("no logs sealed to roll up")
 
@@ -85,8 +86,10 @@ class TestSeverityNormalisationOnRealData:
             ]
             assert len(keys) == len(set(keys)), f"{path.name}: duplicate rollup keys"
 
-    def test_every_severity_is_folded_and_present(self, store, sources, settings, parquet):
-        report = go(store, sources, settings, [parquet])
+    def test_every_severity_is_folded_and_present(
+        self, store, sources, settings, parquet, backfill_for
+    ):
+        report = go(store, sources, settings, backfill_for, [parquet])
         if not report.processed:
             pytest.skip("no logs sealed to roll up")
 
@@ -96,11 +99,11 @@ class TestSeverityNormalisationOnRealData:
         assert all(s == s.lower() for s in severities), f"unfolded casing: {severities}"
 
     def test_events_exceed_stored_entries_where_upstream_deduplicated(
-        self, store, sources, settings, parquet
+        self, store, sources, settings, parquet, backfill_for
     ):
         """`sum` is events represented, `count` is Loki entries stored. Counting entries
         would undercount a flood by exactly the factor the upstream Collector achieved."""
-        report = go(store, sources, settings, [parquet])
+        report = go(store, sources, settings, backfill_for, [parquet])
         if not report.processed:
             pytest.skip("no logs sealed to roll up")
 
@@ -111,23 +114,25 @@ class TestSeverityNormalisationOnRealData:
 
 
 class TestIdempotency:
-    def test_running_twice_writes_identical_parquet_bytes(self, store, sources, settings, parquet):
-        first = go(store, sources, settings, [parquet])
+    def test_running_twice_writes_identical_parquet_bytes(
+        self, store, sources, settings, parquet, backfill_for
+    ):
+        first = go(store, sources, settings, backfill_for, [parquet])
         if not first.processed:
             pytest.skip("no logs sealed to roll up")
         before = {p: p.read_bytes() for p in sorted(parquet.root.rglob("*.parquet"))}
 
         store.reset(SIGNAL)
-        go(store, sources, settings, [parquet])
+        go(store, sources, settings, backfill_for, [parquet])
 
         after = {p: p.read_bytes() for p in sorted(parquet.root.rglob("*.parquet"))}
         assert after.keys() == before.keys()
         for path, content in before.items():
             assert after[path] == content, f"{path.name} changed on re-run"
 
-    def test_a_second_run_does_nothing(self, store, sources, settings, parquet):
-        go(store, sources, settings, [parquet])
-        assert go(store, sources, settings, [parquet]).processed == []
+    def test_a_second_run_does_nothing(self, store, sources, settings, parquet, backfill_for):
+        go(store, sources, settings, backfill_for, [parquet])
+        assert go(store, sources, settings, backfill_for, [parquet]).processed == []
 
 
 class TestNoFeedbackLoop:
@@ -143,7 +148,7 @@ class TestNoFeedbackLoop:
 
 
 class TestLokiSinkAgainstRealLoki:
-    def test_the_push_is_accepted(self, store, sources, settings, parquet):
+    def test_the_push_is_accepted(self, store, sources, settings, parquet, backfill_for):
         """Asserts on acceptance plus the authoritative Parquet copy, NOT on an immediate
         read-back.
 
@@ -154,14 +159,16 @@ class TestLokiSinkAgainstRealLoki:
         """
         with httpx.Client(timeout=settings.http_timeout_seconds) as client:
             loki = LokiSink(settings.loki_url, client)
-            report = go(store, sources, settings, [parquet, loki], max_buckets=2)
+            report = go(store, sources, settings, backfill_for, [parquet, loki], max_buckets=2)
             if not report.processed:
                 pytest.skip("no logs sealed to roll up")
 
             assert report.failed == []
             assert store.buckets(SIGNAL, COMMITTED), "committed despite a sink failure?"
 
-    def test_a_loki_failure_leaves_the_bucket_uncommitted(self, store, sources, settings, parquet):
+    def test_a_loki_failure_leaves_the_bucket_uncommitted(
+        self, store, sources, settings, parquet, backfill_for
+    ):
         """An unreachable Loki must stop the commit -- but only for buckets that had
         something to write.
 
@@ -173,7 +180,7 @@ class TestLokiSinkAgainstRealLoki:
         """
         with httpx.Client(timeout=2.0) as client:
             broken = LokiSink("http://127.0.0.1:1", client)
-            report = go(store, sources, settings, [parquet, broken])
+            report = go(store, sources, settings, backfill_for, [parquet, broken])
 
         if not report.failed:
             pytest.skip("no non-empty log bucket in the window to fail on")
