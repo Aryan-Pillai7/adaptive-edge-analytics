@@ -8,5 +8,6 @@ the aggregation be tested against recorded fixtures with nothing running, and wh
 from edgerollup.rollups.base import Rollup
 from edgerollup.rollups.logs import LogsRollup
 from edgerollup.rollups.metrics import MetricsRollup
+from edgerollup.rollups.traces import TracesRollup
 
-__all__ = ["LogsRollup", "MetricsRollup", "Rollup"]
+__all__ = ["LogsRollup", "MetricsRollup", "Rollup", "TracesRollup"]

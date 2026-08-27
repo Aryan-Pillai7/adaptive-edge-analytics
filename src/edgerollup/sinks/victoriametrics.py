@@ -55,8 +55,11 @@ ROLLUP_PREFIX = "aea_rollup_"
 
 # Which aggregates reach VictoriaMetrics, by inferred metric type. A counter's only
 # meaningful hourly figure is its increase; a gauge's are its average and extremes.
-COUNTER_AGGREGATES = ("delta",)
-GAUGE_AGGREGATES = ("avg", "min", "max")
+COUNTER_AGGREGATES = ("delta", "count")
+# `count` and the percentiles are included for every gauge-like row. Absent extras are
+# skipped, so a metric gauge simply emits avg/min/max/count while a trace row also emits
+# its percentiles -- without the sink needing to know which signal it is writing.
+GAUGE_AGGREGATES = ("avg", "min", "max", "count", "p50", "p90", "p95", "p99")
 
 # Labels VM would reject or that would collide with its own.
 _RESERVED = frozenset({"__name__", "job", "instance"})

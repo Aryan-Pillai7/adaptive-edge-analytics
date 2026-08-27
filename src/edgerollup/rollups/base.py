@@ -47,6 +47,17 @@ class Rollup(ABC):
         self.dimensions = tuple(dimensions)
         self.dimension_set = frozenset(dimensions)
 
+    @classmethod
+    def from_config(cls, dimensions: tuple[str, ...], entry: dict) -> Rollup:
+        """Build from this signal's `rollup.yaml` entry.
+
+        Default ignores the entry. Overridden where a signal needs more than its
+        dimension list -- traces need their percentile set. Kept here rather than in the
+        registry so that adding a signal with extra config does not require the registry
+        to learn anything about it.
+        """
+        return cls(dimensions)
+
     @abstractmethod
     def aggregate(
         self, granularity: Granularity, bucket: TimeRange, records: list[RawRecord]

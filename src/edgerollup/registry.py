@@ -14,7 +14,7 @@ from contextlib import contextmanager
 import httpx
 
 from edgerollup.config import Settings, load_rollup_config
-from edgerollup.rollups import LogsRollup, MetricsRollup, Rollup
+from edgerollup.rollups import LogsRollup, MetricsRollup, Rollup, TracesRollup
 from edgerollup.sinks import LokiSink, ParquetSink, Sink, VictoriaMetricsSink
 from edgerollup.sources import LokiSource, Source, TempoSource, VictoriaMetricsSource
 from edgerollup.writer import RollupWriter
@@ -62,6 +62,7 @@ def open_sources(settings: Settings) -> Iterator[dict[str, Source]]:
 ROLLUPS: dict[str, type[Rollup]] = {
     "metrics": MetricsRollup,
     "logs": LogsRollup,
+    "traces": TracesRollup,
 }
 
 
@@ -111,4 +112,5 @@ def build_writer(signal: str, sinks: list[Sink]) -> RollupWriter | None:
     rollup_type = ROLLUPS.get(signal)
     if rollup_type is None:
         return None
-    return RollupWriter(rollup_type(dimensions_for(signal)), sinks)
+    entry = (load_rollup_config()["signals"].get(signal)) or {}
+    return RollupWriter(rollup_type.from_config(dimensions_for(signal), entry), sinks)
