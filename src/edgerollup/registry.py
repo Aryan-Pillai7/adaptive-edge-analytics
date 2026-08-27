@@ -14,8 +14,8 @@ from contextlib import contextmanager
 import httpx
 
 from edgerollup.config import Settings, load_rollup_config
-from edgerollup.rollups import MetricsRollup, Rollup
-from edgerollup.sinks import ParquetSink, Sink, VictoriaMetricsSink
+from edgerollup.rollups import LogsRollup, MetricsRollup, Rollup
+from edgerollup.sinks import LokiSink, ParquetSink, Sink, VictoriaMetricsSink
 from edgerollup.sources import LokiSource, Source, TempoSource, VictoriaMetricsSource
 from edgerollup.writer import RollupWriter
 
@@ -61,6 +61,7 @@ def open_sources(settings: Settings) -> Iterator[dict[str, Source]]:
 #: rather than failing on.
 ROLLUPS: dict[str, type[Rollup]] = {
     "metrics": MetricsRollup,
+    "logs": LogsRollup,
 }
 
 
@@ -88,7 +89,11 @@ def open_sinks(settings: Settings) -> Iterator[dict[str, list[Sink]]]:
     with httpx.Client(timeout=settings.http_timeout_seconds) as client:
         parquet = ParquetSink(settings.parquet_root)
         victoria = VictoriaMetricsSink(settings.victoriametrics_url, client)
-        available: dict[str, Sink] = {"parquet": parquet, "victoriametrics": victoria}
+        available: dict[str, Sink] = {
+            "parquet": parquet,
+            "victoriametrics": victoria,
+            "loki": LokiSink(settings.loki_url, client),
+        }
 
         per_signal: dict[str, list[Sink]] = {}
         for signal, entry in config["signals"].items():
