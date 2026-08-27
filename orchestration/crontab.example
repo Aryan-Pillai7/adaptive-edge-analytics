@@ -1,0 +1,35 @@
+# edge-rollup — hourly cold-tier rollups
+#
+#   crontab -e     then paste, adjusting the path
+#
+# Hourly, at 20 past. NOT on the hour: the job seals buckets that closed at least one
+# grace period ago, and starting exactly on the hour means every run begins by finding
+# the just-closed bucket still unsealed and skipping it. Twenty past means each run
+# picks up the previous hour's bucket on its first attempt, which keeps the cold tier
+# one hour behind rather than two.
+#
+# Only one run happens at a time regardless of what is scheduled here: run_rollup.sh
+# takes a lock and exits 0 without working if a previous run is still going.
+
+20 * * * * cd /path/to/adaptive-edge-analytics && bash orchestration/run_rollup.sh >> .rollup-state/logs/rollup.log 2>&1
+
+# --- optional: the tiering gate, daily ---------------------------------------
+# Fails (non-zero) if any backend's raw retention has become too short for the job's
+# cadence, which is a silent-data-loss condition -- raw expiring before the job reaches
+# it produces an empty bucket indistinguishable from a quiet hour. Worth catching by
+# schedule rather than by noticing a gap later.
+#
+# 30 6 * * * cd /path/to/adaptive-edge-analytics && bash scripts/verify-tiering.sh >> .rollup-state/logs/tiering.log 2>&1
+
+# --- notes -------------------------------------------------------------------
+# * cron runs with a minimal environment. `cd` first so .env is found; the job reads
+#   configuration from the working directory.
+# * Exit codes: 0 ok · 2 usage · 4 backend unreachable · 5 one or more buckets failed.
+# * A backend outage during a run shows up as exit 5, not 4: failures are recorded
+#   per-bucket rather than aborting the run, so the other signals still get processed.
+# * An occasional 5 self-heals — a bucket is only checkpointed after every sink has
+#   durably accepted it, so the next run redoes the window. A PERSISTENT 5 does not:
+#   that is a hole in the cold tier holding the checkpoint frontier back. Investigate
+#   with `edge-rollup status`, which names the failed buckets and the error.
+# * On Windows this is Task Scheduler rather than cron. The script itself is portable;
+#   the lock uses mkdir precisely because flock does not exist there.
