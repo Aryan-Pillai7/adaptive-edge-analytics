@@ -22,10 +22,11 @@ from edgerollup.clock import SystemClock
 from edgerollup.config import SIGNALS, Settings, load_rollup_config
 from edgerollup.model import TimeRange
 from edgerollup.pipeline import NOOP_WRITER, run_signal
-from edgerollup.registry import open_sources
+from edgerollup.registry import ROLLUPS, build_writer, open_sinks, open_sources
 from edgerollup.sources import SourceError
 from edgerollup.state import COMMITTED, FAILED, StateStore
 from edgerollup.windows import Granularity, watermark
+from edgerollup.writer import writer_version
 
 log = logging.getLogger("edgerollup")
 
@@ -209,9 +210,22 @@ def cmd_run(args: argparse.Namespace) -> int:
     failures = 0
     with (
         open_sources(settings) as sources,
+        open_sinks(settings) as sinks,
         StateStore(settings.state_dir / "checkpoints.db") as store,
     ):
         for signal in signals:
+            writer = build_writer(signal, sinks.get(signal, []))
+            if writer is None:
+                # A signal with no rollup yet is skipped explicitly and loudly, rather
+                # than silently running the no-op processor and leaving checkpoints that
+                # claim work was done.
+                log.warning(
+                    "%s: no rollup implemented yet — skipping (implemented: %s)",
+                    signal,
+                    ", ".join(sorted(ROLLUPS)),
+                )
+                continue
+
             for granularity in granularities:
                 report = run_signal(
                     signal=signal,
@@ -221,6 +235,8 @@ def cmd_run(args: argparse.Namespace) -> int:
                     clock=clock,
                     grace=settings.grace(signal),
                     max_backfill=timedelta(hours=settings.max_backfill_hours),
+                    processor=writer,
+                    writer_version=writer_version(signal),
                     dry_run=args.dry_run,
                 )
                 log.info("%s%s", "[dry-run] " if args.dry_run else "", report.summary())

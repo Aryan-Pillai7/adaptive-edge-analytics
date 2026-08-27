@@ -51,6 +51,13 @@ signals:
   metrics:
     enabled: true
     source: victoriametrics
+    # MUST exclude the cold tier. Without this the job reads back its own output and
+    # rolls up its rollups -- caught by running it: a second pass found
+    # `aea_rollup_edgeapp_requests_total_delta` sitting in its own input. Two guards
+    # rather than one, because either alone is a single edit away from reopening the
+    # loop: `tier!="cold"` catches anything correctly labelled, and the name-prefix
+    # exclusion catches anything written before the label existed or by hand.
+    selector: '{__name__!~"aea_rollup_.*", tier!="cold"}'
     # Raw resolution is ~15s. Aggregating to 1h is a 240:1 reduction before any
     # cardinality effects.
     dimensions: [route, method, status]
@@ -59,6 +66,9 @@ signals:
   logs:
     enabled: true
     source: loki
+    # Same reasoning as metrics: cold-tier rollup streams carry tier="cold" and must
+    # never be read back in as raw input.
+    selector: '{service_name=~".+", tier!="cold"}'
     # Counts by severity per bucket -- NOT literal log-line aggregation. A rolled-up log
     # tier answers "how much, of what kind, when", not "what did line 4,812 say"; the
     # latter is what the hot tier is for, and is exactly what expires.
@@ -72,6 +82,8 @@ signals:
   traces:
     enabled: true
     source: tempo
+    # Tempo is never written to, so it cannot contain rollups and needs no exclusion.
+    selector: "{}"
     # Latency distribution and error rate per service per bucket.
     #
     # Computed CLIENT-SIDE. Tempo's TraceQL metrics API returns `empty ring` on this

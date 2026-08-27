@@ -26,6 +26,7 @@ from __future__ import annotations
 
 import json
 import logging
+from collections import defaultdict
 from datetime import UTC, datetime
 
 from edgerollup.model import RawRecord, TimeRange, canonical_dimensions, stable_identity
@@ -114,20 +115,55 @@ class VictoriaMetricsSource(Source):
         # in the series and this is the hot loop of the whole read path.
         series_key = stable_identity(name, dimensions)
 
-        out: list[RawRecord] = []
+        # A series CAN hold several samples at one instant. Measured on this stack:
+        # `gen_total` had 20 samples at a single millisecond, values 0..19. That is not
+        # a VictoriaMetrics quirk -- it is upstream cardinality collapse. Twenty distinct
+        # streams had their distinguishing label stripped by the Collector without a
+        # following re-aggregation, so twenty independent counters were remote-written
+        # into one series at one timestamp. The sibling project documents this exact
+        # pathology ("transform delete must always be followed by metrics_transform").
+        #
+        # Two wrong ways to handle it. Keeping one sample per timestamp silently discards
+        # nineteen real measurements. Failing the bucket lets one malformed series take
+        # out an hour of otherwise good data.
+        #
+        # So all samples are kept and the identity is widened by an ordinal within the
+        # (series, timestamp) group. The ordinal is assigned after sorting the group's
+        # VALUES, not by position in the response -- so identity depends only on what is
+        # stored, never on the order the backend happened to serialise it in, and two
+        # runs agree even if that order changes.
+        by_timestamp: dict[int, list[float]] = defaultdict(list)
         for value, ts_millis in zip(values, timestamps, strict=True):
-            if value is None:
-                continue
-            out.append(
-                RawRecord(
-                    signal="metrics",
-                    timestamp=datetime.fromtimestamp(ts_millis / 1000.0, tz=UTC),
-                    dimensions=dimensions,
-                    value=float(value),
-                    # (series, exact stored timestamp) is unique by construction: a
-                    # timeseries cannot hold two samples at one instant.
-                    identity=f"{series_key}:{ts_millis}",
-                    signal_kind=name,
+            if value is not None:
+                by_timestamp[ts_millis].append(float(value))
+
+        duplicated = 0
+        out: list[RawRecord] = []
+        for ts_millis, group in by_timestamp.items():
+            if len(group) > 1:
+                duplicated += len(group)
+            for ordinal, value in enumerate(sorted(group)):
+                out.append(
+                    RawRecord(
+                        signal="metrics",
+                        timestamp=datetime.fromtimestamp(ts_millis / 1000.0, tz=UTC),
+                        dimensions=dimensions,
+                        value=value,
+                        identity=f"{series_key}:{ts_millis}:{ordinal}",
+                        signal_kind=name,
+                    )
                 )
+
+        if duplicated:
+            # Worth saying out loud: it means an upstream series is carrying several
+            # collapsed streams, so its counter aggregates describe a merge of them
+            # rather than one counter.
+            log.warning(
+                "metrics: %s has %d samples sharing a timestamp with another sample "
+                "(upstream label stripping without re-aggregation?)",
+                name,
+                duplicated,
             )
+
+        out.sort(key=lambda r: (r.timestamp, r.identity))
         return out
