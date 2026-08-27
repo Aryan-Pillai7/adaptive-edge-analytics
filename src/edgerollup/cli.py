@@ -17,6 +17,8 @@ import logging
 import sys
 from datetime import UTC, datetime, timedelta
 
+import httpx
+
 from edgerollup import __version__
 from edgerollup.clock import SystemClock
 from edgerollup.config import SIGNALS, Settings, load_rollup_config
@@ -25,6 +27,12 @@ from edgerollup.pipeline import NOOP_WRITER, run_signal
 from edgerollup.registry import ROLLUPS, build_writer, open_sinks, open_sources
 from edgerollup.sources import SourceError
 from edgerollup.state import COMMITTED, FAILED, StateStore
+from edgerollup.tiering import (
+    check_safety_margin,
+    humanise,
+    measure_ratio,
+    probe_retentions,
+)
 from edgerollup.windows import Granularity, watermark
 from edgerollup.writer import writer_version
 
@@ -116,6 +124,24 @@ def build_parser() -> argparse.ArgumentParser:
 
     # --- status ------------------------------------------------------------------
     sub.add_parser("status", help="show checkpoints, watermarks and configured endpoints")
+
+    # --- tiering -----------------------------------------------------------------
+    tiering = sub.add_parser(
+        "tiering",
+        help="audit retention across the backends and report the hot/cold size ratio",
+    )
+    tiering.add_argument(
+        "--job-interval-hours",
+        type=float,
+        default=1.0,
+        help="how often the rollup job runs; used for the safety-margin check (default 1)",
+    )
+    tiering.add_argument(
+        "--safety-margin-hours",
+        type=float,
+        default=2.0,
+        help="extra headroom required on top of grace + interval (default 2)",
+    )
 
     return parser
 
@@ -283,6 +309,86 @@ def cmd_probe(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_tiering(args: argparse.Namespace) -> int:
+    """The tiering report: retention audit plus the hot/cold ratio table.
+
+    Exits non-zero if any backend's hot retention is too short for the job's cadence,
+    because that is a silent-data-loss condition rather than a warning: raw data expiring
+    before the job reaches it produces an empty bucket indistinguishable from a quiet one.
+    """
+    settings = Settings()
+    job_interval = timedelta(hours=args.job_interval_hours)
+    safety_margin = timedelta(hours=args.safety_margin_hours)
+
+    with httpx.Client(timeout=settings.http_timeout_seconds) as client:
+        retentions = probe_retentions(settings, client)
+    checks = check_safety_margin(retentions, settings, job_interval, safety_margin)
+
+    print("RETENTION, as read from the running backends")
+    print(f"  {'backend':<17}{'hot':>8}{'cold':>8}  {'tiers?':<8}note")
+    print("  " + "-" * 84)
+    for backend in retentions:
+        print(
+            f"  {backend.name:<17}{humanise(backend.hot):>8}{humanise(backend.cold):>8}  "
+            f"{'yes' if backend.can_tier else 'NO':<8}{backend.note}"
+        )
+
+    worst = max(settings.grace(s) for s in SIGNALS)
+    required = worst + job_interval + safety_margin
+    print()
+    print(
+        f"SAFETY MARGIN — hot must exceed grace ({humanise(worst)}) + interval "
+        f"({humanise(job_interval)}) + margin ({humanise(safety_margin)}) = {humanise(required)}"
+    )
+    for check in checks:
+        mark = "ok " if check.ok else "FAIL"
+        print(f"  [{mark}] {check.backend:<17}{humanise(check.hot):>8}   {check.detail}")
+
+    print()
+    print("HOT / COLD RATIO — measured from the Parquet archive")
+    print(
+        f"  {'signal':<10}{'buckets':>9}{'empty':>7}{'raw records':>14}{'rollup rows':>13}"
+        f"{'reduction':>12}{'cold bytes':>12}"
+    )
+    print("  " + "-" * 77)
+    totals = [measure_ratio(signal, settings.parquet_root) for signal in SIGNALS]
+    for ratio in totals:
+        if not ratio.buckets:
+            print(f"  {ratio.signal:<10}{'—  no cold tier written yet':>60}")
+            continue
+        print(
+            f"  {ratio.signal:<10}{ratio.buckets:>9,}{ratio.empty_buckets:>7,}"
+            f"{ratio.raw_records:>14,}{ratio.rollup_rows:>13,}"
+            f"{ratio.reduction:>11,.0f}x{ratio.cold_bytes:>12,}"
+        )
+
+    written = [r for r in totals if r.buckets]
+    if written:
+        raw = sum(r.raw_records for r in written)
+        rows = sum(r.rollup_rows for r in written)
+        cold = sum(r.cold_bytes for r in written)
+        overhead = sum(r.empty_bytes for r in written)
+        empty = sum(r.empty_buckets for r in written)
+        print("  " + "-" * 77)
+        print(
+            f"  {'TOTAL':<10}{sum(r.buckets for r in written):>9,}{empty:>7,}"
+            f"{raw:>14,}{rows:>13,}{(raw / rows if rows else 0):>11,.0f}x{cold:>12,}"
+        )
+        print()
+        print(f"  {cold / raw * 1000:.2f} cold bytes per 1,000 raw records")
+        if overhead:
+            # Said plainly, because otherwise a sparse signal looks like the rollup
+            # barely helped when in fact there was almost nothing to roll up.
+            print(
+                f"  of which {overhead:,} bytes ({overhead / cold:.0%}) is the Parquet "
+                f"schema footer on {empty} empty bucket(s) — a fixed per-file floor, "
+                f"not summary data"
+            )
+
+    # Non-zero on a failed margin: under cron this is the only signal anyone sees.
+    return 6 if any(not c.ok for c in checks) else 0
+
+
 def _not_yet(phase: str):
     def handler(args: argparse.Namespace) -> int:
         raise NotImplementedYet(f"lands in {phase}")
@@ -292,6 +398,7 @@ def _not_yet(phase: str):
 
 HANDLERS = {
     "status": cmd_status,
+    "tiering": cmd_tiering,
     "probe": cmd_probe,
     "run": cmd_run,
     "backfill": _not_yet("the aggregation milestone"),
